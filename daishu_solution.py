@@ -18,10 +18,20 @@ from torch.utils.data import Dataset,TensorDataset, DataLoader,RandomSampler
 from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 import argparse
 
+# Usage -------------------------------------------------------
+# Inputs: 
+#   --input_dir 
+# Parameters:
+#   EPOCHS = 23
+#   ncompo_cells = 10
+#   ncompo_genes = 80
+#   dropout = 0.26 (probability)
+# Outputs: 
+#   ./daishu_submission.csv
+
 def Parse_args():
     args = argparse.ArgumentParser()
-    args.add_argument('--input_dir',
-                      default='./data', help='input data path of dataset')
+    args.add_argument('--input_dir', default='./data', help='input data path of dataset')
     args = args.parse_args()
     return args
 
@@ -57,12 +67,16 @@ files = ['%s/test_features.csv'%args.input_dir,
          '%s/train_drug.csv'%args.input_dir,
          '%s/sample_submission.csv'%args.input_dir]
 
+print("load the data ...")
+
 test = pd.read_csv(files[0])
 train_target = pd.read_csv(files[1])
 train = pd.read_csv(files[2])
 train_nonscored = pd.read_csv(files[3])
 train_drug = pd.read_csv(files[4])
 sub = pd.read_csv(files[5])
+
+print("Drop selected features (because low variability) ...")
 
 drop_cols = ['g-513', 'g-370', 'g-707', 'g-300', 'g-130', 'g-375', 'g-161',
        'g-191', 'g-376', 'g-176', 'g-477', 'g-719', 'g-449', 'g-204',
@@ -112,6 +126,8 @@ def Feature(df):
         df.drop([col],axis=1,inplace=True)
     return df,transformers,gene_pca,cell_pca
 
+print("Feature processing ...")
+
 tt = train.append(test).reset_index(drop=True)
 tt,transformers,gene_pca,cell_pca = Feature(tt)
 train = tt[:train.shape[0]]
@@ -133,13 +149,11 @@ def Ctl_augment(train,target,train_nonscored):
         nonscore_target1 = train_nonscored.copy()
         ctl1 = ctl_train.sample(train1.shape[0],replace=True).reset_index(drop=True)
         ctl2 = ctl_train.sample(train1.shape[0],replace=True).reset_index(drop=True)
-
         ctl3 = ctl_train.sample(train1.shape[0],replace=True).reset_index(drop=True)
         ctl4 = ctl_train.sample(train1.shape[0],replace=True).reset_index(drop=True)
         mask_index1 = list(np.random.choice(ctl3.index.tolist(),int(ctl3.shape[0]*0.4),replace=False))
         ctl3.loc[mask_index1,genes+cells] = 0.0
         ctl4.loc[mask_index1,genes+cells] = 0.0
-
         ctl5 = ctl_train.sample(train1.shape[0],replace=True).reset_index(drop=True)
         ctl6 = ctl_train.sample(train1.shape[0],replace=True).reset_index(drop=True)
         mask_index2 = list(np.random.choice(list(set(ctl5.index)-set(mask_index1)),int(ctl5.shape[0]*0.3),replace=False))
@@ -228,7 +242,6 @@ class Model(nn.Module):
         y1 = self.dense4(x)
         return y,y1
 
-
 class GBN(nn.Module):
     def __init__(self,inp,vbs=128,momentum=0.01):
         super().__init__()
@@ -252,7 +265,6 @@ class GLU(nn.Module):
     def forward(self,x):
         x = self.dropout(self.bn(F.leaky_relu((self.fc(x)))))
         return x[:,:self.od]*torch.sigmoid(x[:,self.od:])
-
 
 class FeatureTransformer(nn.Module):
     def __init__(self,inp_dim,out_dim,shared,n_ind,vbs=128):
@@ -400,7 +412,7 @@ class Self_Attention(nn.Module):
         return outputs
 
 class Attention_dnn(nn.Module):
-    def __init__(self, num_features, num_targets, hidden_size0,hidden_size, num_attention_heads, attention_probs_dropout_prob):
+    def __init__(self, num_features, num_targets, hidden_size0, hidden_size, num_attention_heads, attention_probs_dropout_prob):
         super().__init__()
         self.batch_norm = nn.BatchNorm1d(num_features)
         self.dense1 = nn.utils.weight_norm(nn.Linear(num_features, hidden_size0))
@@ -490,6 +502,7 @@ class Dnn(nn.Module):
         y = self.dense4(x)
         y1 = self.dense5(x)
         return y,y1
+
 
 device = ('cuda' if torch.cuda.is_available() else 'cpu')
 EPOCHS = 23
@@ -639,6 +652,8 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
 
 train_cols = [col for col in train.columns if col not in ['sig_id','cp_type']]
 
+print("Model 1: attention DNN (aug = TRUE)...")
+
 seed = 6
 Seed_everything(seed)
 oof,sub = train_and_predict(train_cols,sub.copy(),aug=True,mn='attention_dnn',seed=seed)
@@ -647,12 +662,19 @@ for seed in [66,666]:
     Seed_everything(seed)
     outputs.append(train_and_predict(train_cols,sub.copy(),aug=True,mn='attention_dnn',seed=seed))
 
+print("Model 2: TabNet (aug = TRUE)...")
+
 for seed in [8,88,888]:
     Seed_everything(seed)
     outputs.append(train_and_predict(train_cols,sub.copy(),aug=True,mn='tabnet',seed=seed))
+
+print("Model 3: DNN (aug = TRUE)...")
+
 for seed in [9,99,999]:
     Seed_everything(seed)
     outputs.append(train_and_predict(train_cols,sub.copy(),aug=True,mn='dnn',seed=seed))
+
+print("Averaging model predictions ...")
 
 for i,output in enumerate(outputs):
     oof[targets] += output[0][targets]
@@ -665,3 +687,5 @@ valid_metric = Metric(train_target[targets].values,oof[targets].values)
 print('oof mean:%.6f,sub mean:%.6f,valid metric:%.6f'%(oof[targets].mean().mean(),sub[targets].mean().mean(),valid_metric))
 sub.loc[test['cp_type']=='ctl_vehicle',targets] = 0.0
 sub.to_csv('./daishu_submission.csv',index=False)
+
+print("done!")

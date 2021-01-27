@@ -92,10 +92,13 @@ train_drug      = pd.read_csv(files[4])
 sub             = pd.read_csv(files[5])
 
 # testing
-train           = train.iloc[:5000, ]
-train_nonscored = train_nonscored.iloc[:5000, ]
-train_target    = train_target.iloc[:5000, ]
-train_drug      = train_drug.iloc[:5000, ]
+if (params.use_subset): 
+  train           = train.iloc[:5000, ]
+  train_nonscored = train_nonscored.iloc[:5000, ]
+  train_target    = train_target.iloc[:5000, ]
+  train_drug      = train_drug.iloc[:5000, ]
+
+logging.info("Training dataset of size {} x {}".format(train.shape[0], train.shape[1]))
 
 logging.info("Dropping selected features with low variability...")  
 
@@ -532,6 +535,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
     eval_train_loss = 0
     for fold, (trn_ind, val_ind) in enumerate(MultilabelStratifiedKFold(n_splits = folds, shuffle=True, random_state=seed)\
                                               .split(train, train_target[targets])):
+        logging.info("Fold {} of {}".format(fold, folds))
         train_X = train.loc[trn_ind,features].values
         eval_train_X = train_X.copy()
         train_Y = train_target.loc[trn_ind,targets].values
@@ -709,8 +713,9 @@ sub[targets] /= (1+len(outputs))
 
 valid_metric = Metric(train_target[targets].values,oof[targets].values)
 
-print('oof mean:%.6f,sub mean:%.6f,valid metric:%.6f'%(oof[targets].mean().mean(),sub[targets].mean().mean(),valid_metric))
+logging.info('oof mean:%.6f,sub mean:%.6f,valid metric:%.6f'%(oof[targets].mean().mean(),sub[targets].mean().mean(),valid_metric))
 sub.loc[test['cp_type']=='ctl_vehicle',targets] = 0.0
-sub.to_csv('./daishu_submission.csv',index=False)
+fname = os.path.join(args.model_dir, "daishu_submission.csv")
+sub.to_csv(fname, index=False)
 
 logging.info("done!")

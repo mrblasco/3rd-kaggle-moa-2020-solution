@@ -1,0 +1,8 @@
+{
+      "ncompo_genes" : 80
+    , "ncompo_cells" : 10
+    , "num_epochs" : 2
+    , "use_subset" : "True"
+}
+
+

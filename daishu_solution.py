@@ -535,7 +535,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
     eval_train_loss = 0
     for fold, (trn_ind, val_ind) in enumerate(MultilabelStratifiedKFold(n_splits = folds, shuffle=True, random_state=seed)\
                                               .split(train, train_target[targets])):
-        logging.info("Fold {} of {}".format(fold, folds))
+        logging.info("[seed {}] fold {} of {}".format(seed, fold, folds))
         train_X = train.loc[trn_ind,features].values
         eval_train_X = train_X.copy()
         train_Y = train_target.loc[trn_ind,targets].values

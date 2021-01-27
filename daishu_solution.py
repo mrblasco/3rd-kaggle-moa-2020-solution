@@ -19,6 +19,8 @@ from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 import argparse
 import json
 import utils
+import logging
+
 
 # Usage -------------------------------------------------------
 # Inputs: 
@@ -33,7 +35,7 @@ import utils
 
 def Parse_args():
     args = argparse.ArgumentParser()
-    args.add_argument('--input_dir', default='./data', help='Directory containing dataset')
+    args.add_argument('--input_dir', default='./data/from_kaggle', help='Directory containing dataset')
     args.add_argument('--model_dir', default='./experiments/base_model'
                       , help='Directory containing params.json')
     args = args.parse_args()
@@ -53,6 +55,7 @@ ncompo_cells = params.ncompo_cells #10
 device = ('cuda' if torch.cuda.is_available() else 'cpu')
 EPOCHS = params.num_epochs # 23
 
+utils.set_logger(os.path.join(args.model_dir, 'train.log'))
 
 def Seed_everything(seed=42):
     random.seed(seed)
@@ -79,16 +82,22 @@ files = ['%s/test_features.csv'%args.input_dir,
          '%s/train_drug.csv'%args.input_dir,
          '%s/sample_submission.csv'%args.input_dir]
  
-print("load the data ...")
+logging.info("Loading the datasets...")  
 
-test = pd.read_csv(files[0])
-train_target = pd.read_csv(files[1])
-train = pd.read_csv(files[2])
+test            = pd.read_csv(files[0])
+train_target    = pd.read_csv(files[1])
+train           = pd.read_csv(files[2])
 train_nonscored = pd.read_csv(files[3])
-train_drug = pd.read_csv(files[4])
-sub = pd.read_csv(files[5])
+train_drug      = pd.read_csv(files[4])
+sub             = pd.read_csv(files[5])
 
-print("Drop selected features (because low variability) ...")
+# testing
+train           = train.iloc[:5000, ]
+train_nonscored = train_nonscored.iloc[:5000, ]
+train_target    = train_target.iloc[:5000, ]
+train_drug      = train_drug.iloc[:5000, ]
+
+logging.info("Dropping selected features with low variability...")  
 
 drop_cols = ['g-513', 'g-370', 'g-707', 'g-300', 'g-130', 'g-375', 'g-161',
        'g-191', 'g-376', 'g-176', 'g-477', 'g-719', 'g-449', 'g-204',
@@ -137,7 +146,7 @@ def Feature(df):
         df.drop([col],axis=1,inplace=True)
     return df,transformers,gene_pca,cell_pca
 
-print("Feature processing ...")
+logging.info("Processing features...")
 
 tt = train.append(test).reset_index(drop=True)
 tt,transformers,gene_pca,cell_pca = Feature(tt)
@@ -618,10 +627,10 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 torch.save(model.state_dict(), fname)
                 not_improve_epochs = 0
                 best_valid_metric = valid_loss
-                print('[epoch %s] lr: %.6f, train_loss: %.6f, valid_metric: %.6f, valid_mean:%.6f, pred_mean:%.6f'%(epoch,optimizer.param_groups[0]['lr'],train_loss,valid_loss,valid_mean,pred_mean))
+                logging.info('[epoch %s] lr: %.6f, train_loss: %.6f, valid_metric: %.6f, valid_mean:%.6f, pred_mean:%.6f'%(epoch,optimizer.param_groups[0]['lr'],train_loss,valid_loss,valid_mean,pred_mean))
             else:
                 not_improve_epochs += 1
-                print('[epoch %s] lr: %.6f, train_loss: %.6f, valid_metric: %.6f, valid_mean:%.6f, pred_mean:%.6f, NIE +1 ---> %s'%(epoch,optimizer.param_groups[0]['lr'],train_loss,valid_loss,valid_mean,pred_mean,not_improve_epochs))
+                logging.info('[epoch %s] lr: %.6f, train_loss: %.6f, valid_metric: %.6f, valid_mean:%.6f, pred_mean:%.6f, NIE +1 ---> %s'%(epoch,optimizer.param_groups[0]['lr'],train_loss,valid_loss,valid_mean,pred_mean,not_improve_epochs))
                 if not_improve_epochs >= 50:
                     break
             model.train()
@@ -667,7 +676,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
 
 train_cols = [col for col in train.columns if col not in ['sig_id','cp_type']]
 
-print("Model 1: attention DNN (aug = TRUE)...")
+logging.info("Model 1: attention DNN (aug = TRUE)...")
 
 seed = 6
 Seed_everything(seed)
@@ -678,19 +687,19 @@ for seed in [66,666]:
     outputs.append(train_and_predict(train_cols,sub.copy()
                     , aug=True,mn='attention_dnn',seed=seed))
 
-print("Model 2: TabNet (aug = TRUE)...")
+logging.info("Model 2: TabNet (aug = TRUE)...")
 
 for seed in [8,88,888]:
     Seed_everything(seed)
     outputs.append(train_and_predict(train_cols,sub.copy(),aug=True,mn='tabnet',seed=seed))
 
-print("Model 3: DNN (aug = TRUE)...")
+logging.info("Model 3: DNN (aug = TRUE)...")
 
 for seed in [9,99,999]:
     Seed_everything(seed)
     outputs.append(train_and_predict(train_cols,sub.copy(),aug=True,mn='dnn',seed=seed))
 
-print("Averaging model predictions ...")
+logging.info("Averaging model predictions ...")
 
 for i, output in enumerate(outputs):
     oof[targets] += output[0][targets]
@@ -704,4 +713,4 @@ print('oof mean:%.6f,sub mean:%.6f,valid metric:%.6f'%(oof[targets].mean().mean(
 sub.loc[test['cp_type']=='ctl_vehicle',targets] = 0.0
 sub.to_csv('./daishu_submission.csv',index=False)
 
-print("done!")
+logging.info("done!")

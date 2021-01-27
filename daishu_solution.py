@@ -50,6 +50,10 @@ warnings.simplefilter('ignore')
 ncompo_genes = params.ncompo_genes #80
 ncompo_cells = params.ncompo_cells #10
 
+device = ('cuda' if torch.cuda.is_available() else 'cpu')
+EPOCHS = params.num_epochs # 23
+
+
 def Seed_everything(seed=42):
     random.seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
@@ -509,9 +513,6 @@ class Dnn(nn.Module):
         y1 = self.dense5(x)
         return y,y1
 
-
-device = ('cuda' if torch.cuda.is_available() else 'cpu')
-EPOCHS = 23
 def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
     oof = train[['sig_id']]
     for t in targets:
@@ -625,9 +626,9 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                     break
             model.train()
         
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
         fname = os.path.join(args.model_dir, 'model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold))
-        state_dict = torch.load(fname, device)
+        state_dict = torch.load(fname
+                      , torch.device("cuda" if torch.cuda.is_available() else "cpu") )
         model.load_state_dict(state_dict)
         model.eval()
         

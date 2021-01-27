@@ -17,6 +17,8 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset,TensorDataset, DataLoader,RandomSampler
 from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 import argparse
+import json
+import utils
 
 # Usage -------------------------------------------------------
 # Inputs: 
@@ -31,16 +33,22 @@ import argparse
 
 def Parse_args():
     args = argparse.ArgumentParser()
-    args.add_argument('--input_dir', default='./data', help='input data path of dataset')
+    args.add_argument('--input_dir', default='./data', help='Directory containing dataset')
+    args.add_argument('--model_dir', default='./experiments/base_model'
+                      , help='Directory containing params.json')
     args = args.parse_args()
     return args
 
 args = Parse_args()
 
+json_path = os.path.join(args.model_dir, 'params.json')   
+assert os.path.isfile(json_path), "No json file found at {}".format(json_path)
+params = utils.Params(json_path)
+
 warnings.simplefilter('ignore')
 
-ncompo_genes = 80
-ncompo_cells = 10
+ncompo_genes = params.ncompo_genes #80
+ncompo_cells = params.ncompo_cells #10
 
 def Seed_everything(seed=42):
     random.seed(seed)
@@ -68,7 +76,6 @@ files = ['%s/test_features.csv'%args.input_dir,
          '%s/sample_submission.csv'%args.input_dir]
  
 print("load the data ...")
-
 
 test = pd.read_csv(files[0])
 train_target = pd.read_csv(files[1])
@@ -606,7 +613,8 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 t_preds.extend(list(outputs.sigmoid().cpu().detach().numpy()))
             pred_mean = np.mean(t_preds)
             if valid_loss < best_valid_metric:
-                torch.save(model.state_dict(),'./model/model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold))
+                fname = os.path.join(args.model_dir, 'model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold))
+                torch.save(model.state_dict(), fname)
                 not_improve_epochs = 0
                 best_valid_metric = valid_loss
                 print('[epoch %s] lr: %.6f, train_loss: %.6f, valid_metric: %.6f, valid_mean:%.6f, pred_mean:%.6f'%(epoch,optimizer.param_groups[0]['lr'],train_loss,valid_loss,valid_mean,pred_mean))
@@ -616,8 +624,10 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 if not_improve_epochs >= 50:
                     break
             model.train()
-
-        state_dict = torch.load('./model/model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold), torch.device("cuda" if torch.cuda.is_available() else "cpu") )
+        
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
+        fname = os.path.join(args.model_dir, 'model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold))
+        state_dict = torch.load(fname, device)
         model.load_state_dict(state_dict)
         model.eval()
         

@@ -66,8 +66,9 @@ files = ['%s/test_features.csv'%args.input_dir,
          '%s/train_targets_nonscored.csv'%args.input_dir,
          '%s/train_drug.csv'%args.input_dir,
          '%s/sample_submission.csv'%args.input_dir]
-
+ 
 print("load the data ...")
+
 
 test = pd.read_csv(files[0])
 train_target = pd.read_csv(files[1])
@@ -119,7 +120,6 @@ def Feature(df):
     pca_genes = pd.DataFrame(pca_genes, columns = [f"pca_g-{i}" for i in range(ncompo_genes)])
     pca_cells = pd.DataFrame(pca_cells, columns = [f"pca_c-{i}" for i in range(ncompo_cells)])
     df = pd.concat([df, pca_genes, pca_cells], axis = 1)
-
     for col in ['cp_time','cp_dose']:
         tmp = pd.get_dummies(df[col],prefix=col)
         df = pd.concat([df,tmp],axis=1)
@@ -159,7 +159,6 @@ def Ctl_augment(train,target,train_nonscored):
         mask_index2 = list(np.random.choice(list(set(ctl5.index)-set(mask_index1)),int(ctl5.shape[0]*0.3),replace=False))
         ctl5.loc[mask_index1+mask_index2,genes+cells] = 0.0
         ctl6.loc[mask_index1+mask_index2,genes+cells] = 0.0
-
         train1[genes+cells] = train1[genes+cells].values + ctl1[genes+cells].values - ctl2[genes+cells].values \
                               + ctl3[genes+cells].values - ctl4[genes+cells].values + ctl5[genes+cells].values - ctl6[genes+cells].values# * np.random.rand(train1.shape[0]).reshape(-1,1)
         aug_train = train1.merge(target1,how='left',on='sig_id')
@@ -598,6 +597,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 valid_loss += (loss.item()*x.shape[0])
             valid_loss /= valid_num
             valid_mean = np.mean(valid_preds)
+            
             t_preds = []
             for data in (test_data_loader):
                 x = data[0].to(device)
@@ -616,9 +616,11 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 if not_improve_epochs >= 50:
                     break
             model.train()
+
         state_dict = torch.load('./model/model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold), torch.device("cuda" if torch.cuda.is_available() else "cpu") )
         model.load_state_dict(state_dict)
         model.eval()
+        
         train_preds = []
         for data in (eval_train_data_loader):
             x = data[0].to(device)
@@ -646,7 +648,9 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
         del train_X,train_Y,valid_X,valid_Y,train_data_loader,valid_data_loader
 
     sub[targets] = np.array(preds).mean(axis=0)
-    print('eval_train_loss:',eval_train_loss/folds,oof[targets].mean().mean(),sub[targets].mean().mean())
+    print('eval_train_loss:', eval_train_loss/folds
+                            , oof[targets].mean().mean()
+                            , sub[targets].mean().mean())
     print('valid_metric:%.6f'%Metric(train_target[targets].values,oof[targets].values))
     return oof,sub
 
@@ -660,7 +664,8 @@ oof,sub = train_and_predict(train_cols,sub.copy(),aug=True,mn='attention_dnn',se
 outputs = []
 for seed in [66,666]:
     Seed_everything(seed)
-    outputs.append(train_and_predict(train_cols,sub.copy(),aug=True,mn='attention_dnn',seed=seed))
+    outputs.append(train_and_predict(train_cols,sub.copy()
+                    , aug=True,mn='attention_dnn',seed=seed))
 
 print("Model 2: TabNet (aug = TRUE)...")
 
@@ -676,7 +681,7 @@ for seed in [9,99,999]:
 
 print("Averaging model predictions ...")
 
-for i,output in enumerate(outputs):
+for i, output in enumerate(outputs):
     oof[targets] += output[0][targets]
     sub[targets] += output[1][targets]
 oof[targets] /= (1+len(outputs))

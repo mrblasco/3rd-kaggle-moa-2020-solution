@@ -2,7 +2,7 @@
       "ncompo_genes" : 80
     , "ncompo_cells" : 10
     , "num_epochs" : 23
-    , "use_subset" : False
+    , "use_subset" : "False"
 }
 
 

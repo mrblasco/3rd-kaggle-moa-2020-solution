@@ -1,0 +1,397 @@
+2021-01-27 14:04:59,010:INFO: Loading the datasets...
+2021-01-27 14:07:20,427:INFO: Loading the datasets...
+2021-01-27 14:07:24,743:INFO: Dropping selected features with low variability...
+2021-01-27 14:07:24,826:INFO: Processing features...
+2021-01-27 14:07:31,418:INFO: Model 1: attention DNN (aug = TRUE)...
+2021-01-27 14:07:55,852:INFO: [epoch 0] lr: 0.001115, train_loss: 0.690086, valid_metric: 0.432143, valid_mean:0.346732, pred_mean:0.346862
+2021-01-27 14:08:03,300:INFO: [epoch 1] lr: 0.002669, train_loss: 0.093670, valid_metric: 0.023744, valid_mean:0.007552, pred_mean:0.007519
+2021-01-27 14:08:10,663:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025145, valid_metric: 0.020897, valid_mean:0.005060, pred_mean:0.005014
+2021-01-27 14:08:17,999:INFO: [epoch 3] lr: 0.002731, train_loss: 0.023257, valid_metric: 0.019755, valid_mean:0.004631, pred_mean:0.004602
+2021-01-27 14:08:25,088:INFO: [epoch 4] lr: 0.002662, train_loss: 0.022541, valid_metric: 0.020022, valid_mean:0.004280, pred_mean:0.004212, NIE +1 ---> 1
+2021-01-27 14:08:32,356:INFO: [epoch 5] lr: 0.002564, train_loss: 0.022553, valid_metric: 0.018633, valid_mean:0.004298, pred_mean:0.004247
+2021-01-27 14:08:39,623:INFO: [epoch 6] lr: 0.002438, train_loss: 0.021443, valid_metric: 0.018124, valid_mean:0.004156, pred_mean:0.004170
+2021-01-27 14:08:46,871:INFO: [epoch 7] lr: 0.002288, train_loss: 0.020985, valid_metric: 0.017823, valid_mean:0.004247, pred_mean:0.004172
+2021-01-27 14:08:54,117:INFO: [epoch 8] lr: 0.002118, train_loss: 0.020454, valid_metric: 0.017652, valid_mean:0.004297, pred_mean:0.004228
+2021-01-27 14:09:01,410:INFO: [epoch 9] lr: 0.001931, train_loss: 0.020102, valid_metric: 0.017582, valid_mean:0.004137, pred_mean:0.004069
+2021-01-27 14:09:08,865:INFO: [epoch 10] lr: 0.001731, train_loss: 0.019783, valid_metric: 0.017386, valid_mean:0.004234, pred_mean:0.004148
+2021-01-27 14:09:16,200:INFO: [epoch 11] lr: 0.001524, train_loss: 0.019508, valid_metric: 0.017335, valid_mean:0.004301, pred_mean:0.004215
+2021-01-27 14:09:23,304:INFO: [epoch 12] lr: 0.001313, train_loss: 0.019138, valid_metric: 0.017345, valid_mean:0.004166, pred_mean:0.004086, NIE +1 ---> 1
+2021-01-27 14:09:30,592:INFO: [epoch 13] lr: 0.001105, train_loss: 0.018920, valid_metric: 0.017288, valid_mean:0.004174, pred_mean:0.004096
+2021-01-27 14:09:37,655:INFO: [epoch 14] lr: 0.000902, train_loss: 0.018598, valid_metric: 0.017302, valid_mean:0.004075, pred_mean:0.003970, NIE +1 ---> 1
+2021-01-27 14:09:44,744:INFO: [epoch 15] lr: 0.000711, train_loss: 0.018284, valid_metric: 0.017321, valid_mean:0.004072, pred_mean:0.003962, NIE +1 ---> 2
+2021-01-27 14:09:52,006:INFO: [epoch 16] lr: 0.000536, train_loss: 0.018096, valid_metric: 0.017189, valid_mean:0.004044, pred_mean:0.003947
+2021-01-27 14:09:59,144:INFO: [epoch 17] lr: 0.000380, train_loss: 0.017894, valid_metric: 0.017195, valid_mean:0.004140, pred_mean:0.004047, NIE +1 ---> 1
+2021-01-27 14:10:06,227:INFO: [epoch 18] lr: 0.000247, train_loss: 0.017713, valid_metric: 0.017224, valid_mean:0.004030, pred_mean:0.003934, NIE +1 ---> 2
+2021-01-27 14:10:13,291:INFO: [epoch 19] lr: 0.000141, train_loss: 0.017693, valid_metric: 0.017261, valid_mean:0.003997, pred_mean:0.003903, NIE +1 ---> 3
+2021-01-27 14:10:20,135:INFO: [epoch 20] lr: 0.000119, train_loss: 0.017414, valid_metric: 0.017233, valid_mean:0.004041, pred_mean:0.003945, NIE +1 ---> 4
+2021-01-27 14:10:26,936:INFO: [epoch 21] lr: 0.000099, train_loss: 0.017396, valid_metric: 0.017220, valid_mean:0.004050, pred_mean:0.003953, NIE +1 ---> 5
+2021-01-27 14:10:33,739:INFO: [epoch 22] lr: 0.000081, train_loss: 0.017385, valid_metric: 0.017215, valid_mean:0.004046, pred_mean:0.003951, NIE +1 ---> 6
+2021-01-27 14:10:41,893:INFO: [epoch 0] lr: 0.001115, train_loss: 0.690029, valid_metric: 0.440003, valid_mean:0.352909, pred_mean:0.354310
+2021-01-27 14:10:49,167:INFO: [epoch 1] lr: 0.002669, train_loss: 0.094161, valid_metric: 0.024655, valid_mean:0.009285, pred_mean:0.009382
+2021-01-27 14:10:56,451:INFO: [epoch 2] lr: 0.002770, train_loss: 0.027024, valid_metric: 0.021649, valid_mean:0.003682, pred_mean:0.003695
+2021-01-27 14:11:03,698:INFO: [epoch 3] lr: 0.002731, train_loss: 0.025099, valid_metric: 0.020986, valid_mean:0.004607, pred_mean:0.004560
+2021-01-27 14:11:10,991:INFO: [epoch 4] lr: 0.002662, train_loss: 0.024503, valid_metric: 0.020201, valid_mean:0.004227, pred_mean:0.004161
+2021-01-27 14:11:18,222:INFO: [epoch 5] lr: 0.002564, train_loss: 0.023783, valid_metric: 0.019424, valid_mean:0.004474, pred_mean:0.004415
+2021-01-27 14:11:25,458:INFO: [epoch 6] lr: 0.002438, train_loss: 0.022903, valid_metric: 0.018572, valid_mean:0.004225, pred_mean:0.004178
+2021-01-27 14:11:32,718:INFO: [epoch 7] lr: 0.002288, train_loss: 0.022024, valid_metric: 0.018143, valid_mean:0.004400, pred_mean:0.004343
+2021-01-27 14:11:40,001:INFO: [epoch 8] lr: 0.002118, train_loss: 0.021449, valid_metric: 0.017776, valid_mean:0.004451, pred_mean:0.004397
+2021-01-27 14:11:47,207:INFO: [epoch 9] lr: 0.001931, train_loss: 0.021030, valid_metric: 0.017734, valid_mean:0.004778, pred_mean:0.004744
+2021-01-27 14:11:54,478:INFO: [epoch 10] lr: 0.001731, train_loss: 0.020665, valid_metric: 0.017530, valid_mean:0.004116, pred_mean:0.004051
+2021-01-27 14:12:01,766:INFO: [epoch 11] lr: 0.001524, train_loss: 0.020290, valid_metric: 0.017270, valid_mean:0.004352, pred_mean:0.004278
+2021-01-27 14:12:09,046:INFO: [epoch 12] lr: 0.001313, train_loss: 0.019981, valid_metric: 0.017209, valid_mean:0.004249, pred_mean:0.004181
+2021-01-27 14:12:16,407:INFO: [epoch 13] lr: 0.001105, train_loss: 0.019739, valid_metric: 0.017105, valid_mean:0.004262, pred_mean:0.004178
+2021-01-27 14:12:23,661:INFO: [epoch 14] lr: 0.000902, train_loss: 0.019397, valid_metric: 0.017072, valid_mean:0.004308, pred_mean:0.004235
+2021-01-27 14:12:30,999:INFO: [epoch 15] lr: 0.000711, train_loss: 0.019239, valid_metric: 0.017019, valid_mean:0.004255, pred_mean:0.004175
+2021-01-27 14:12:38,173:INFO: [epoch 16] lr: 0.000536, train_loss: 0.018983, valid_metric: 0.017093, valid_mean:0.004128, pred_mean:0.004059, NIE +1 ---> 1
+2021-01-27 14:12:45,522:INFO: [epoch 17] lr: 0.000380, train_loss: 0.018830, valid_metric: 0.016964, valid_mean:0.004183, pred_mean:0.004106
+2021-01-27 14:12:52,832:INFO: [epoch 18] lr: 0.000247, train_loss: 0.018597, valid_metric: 0.016923, valid_mean:0.004202, pred_mean:0.004130
+2021-01-27 14:13:00,138:INFO: [epoch 19] lr: 0.000141, train_loss: 0.018599, valid_metric: 0.016921, valid_mean:0.004182, pred_mean:0.004108
+2021-01-27 14:13:07,095:INFO: [epoch 20] lr: 0.000119, train_loss: 0.018439, valid_metric: 0.016951, valid_mean:0.004212, pred_mean:0.004130, NIE +1 ---> 1
+2021-01-27 14:13:14,075:INFO: [epoch 21] lr: 0.000099, train_loss: 0.018334, valid_metric: 0.016951, valid_mean:0.004204, pred_mean:0.004129, NIE +1 ---> 2
+2021-01-27 14:13:20,984:INFO: [epoch 22] lr: 0.000081, train_loss: 0.018404, valid_metric: 0.016939, valid_mean:0.004200, pred_mean:0.004123, NIE +1 ---> 3
+2021-01-27 14:13:28,947:INFO: [epoch 0] lr: 0.001115, train_loss: 0.689002, valid_metric: 0.410675, valid_mean:0.334487, pred_mean:0.334775
+2021-01-27 14:13:36,253:INFO: [epoch 1] lr: 0.002669, train_loss: 0.094239, valid_metric: 0.024844, valid_mean:0.009718, pred_mean:0.009778
+2021-01-27 14:13:43,542:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025442, valid_metric: 0.020562, valid_mean:0.004700, pred_mean:0.004663
+2021-01-27 14:13:50,876:INFO: [epoch 3] lr: 0.002731, train_loss: 0.023969, valid_metric: 0.019590, valid_mean:0.004185, pred_mean:0.004176
+2021-01-27 14:13:58,193:INFO: [epoch 4] lr: 0.002662, train_loss: 0.022768, valid_metric: 0.018534, valid_mean:0.003960, pred_mean:0.003945
+2021-01-27 14:14:05,476:INFO: [epoch 5] lr: 0.002564, train_loss: 0.022445, valid_metric: 0.018298, valid_mean:0.004155, pred_mean:0.004162
+2021-01-27 14:14:12,752:INFO: [epoch 6] lr: 0.002438, train_loss: 0.021503, valid_metric: 0.017951, valid_mean:0.004521, pred_mean:0.004506
+2021-01-27 14:14:20,102:INFO: [epoch 7] lr: 0.002288, train_loss: 0.021021, valid_metric: 0.017646, valid_mean:0.004080, pred_mean:0.004049
+2021-01-27 14:14:27,342:INFO: [epoch 8] lr: 0.002118, train_loss: 0.020598, valid_metric: 0.017544, valid_mean:0.004032, pred_mean:0.003997
+2021-01-27 14:14:34,538:INFO: [epoch 9] lr: 0.001931, train_loss: 0.020219, valid_metric: 0.017353, valid_mean:0.004021, pred_mean:0.003995
+2021-01-27 14:14:41,625:INFO: [epoch 10] lr: 0.001731, train_loss: 0.019969, valid_metric: 0.017941, valid_mean:0.004231, pred_mean:0.004206, NIE +1 ---> 1
+2021-01-27 14:14:48,891:INFO: [epoch 11] lr: 0.001524, train_loss: 0.020112, valid_metric: 0.017249, valid_mean:0.004342, pred_mean:0.004318
+2021-01-27 14:14:56,124:INFO: [epoch 12] lr: 0.001313, train_loss: 0.019595, valid_metric: 0.017220, valid_mean:0.004310, pred_mean:0.004275
+2021-01-27 14:15:03,436:INFO: [epoch 13] lr: 0.001105, train_loss: 0.019174, valid_metric: 0.017175, valid_mean:0.004129, pred_mean:0.004108
+2021-01-27 14:15:10,690:INFO: [epoch 14] lr: 0.000902, train_loss: 0.018976, valid_metric: 0.017172, valid_mean:0.004265, pred_mean:0.004236
+2021-01-27 14:15:17,966:INFO: [epoch 15] lr: 0.000711, train_loss: 0.018691, valid_metric: 0.017064, valid_mean:0.004169, pred_mean:0.004137
+2021-01-27 14:15:25,204:INFO: [epoch 16] lr: 0.000536, train_loss: 0.018503, valid_metric: 0.017014, valid_mean:0.004093, pred_mean:0.004062
+2021-01-27 14:15:32,273:INFO: [epoch 17] lr: 0.000380, train_loss: 0.018326, valid_metric: 0.017031, valid_mean:0.004125, pred_mean:0.004110, NIE +1 ---> 1
+2021-01-27 14:15:39,308:INFO: [epoch 18] lr: 0.000247, train_loss: 0.018160, valid_metric: 0.017041, valid_mean:0.004130, pred_mean:0.004112, NIE +1 ---> 2
+2021-01-27 14:15:46,544:INFO: [epoch 19] lr: 0.000141, train_loss: 0.018059, valid_metric: 0.017000, valid_mean:0.004036, pred_mean:0.004020
+2021-01-27 14:15:53,398:INFO: [epoch 20] lr: 0.000119, train_loss: 0.017920, valid_metric: 0.017038, valid_mean:0.004092, pred_mean:0.004074, NIE +1 ---> 1
+2021-01-27 14:16:00,272:INFO: [epoch 21] lr: 0.000099, train_loss: 0.017807, valid_metric: 0.017025, valid_mean:0.004074, pred_mean:0.004055, NIE +1 ---> 2
+2021-01-27 14:16:07,145:INFO: [epoch 22] lr: 0.000081, train_loss: 0.017866, valid_metric: 0.017022, valid_mean:0.004087, pred_mean:0.004070, NIE +1 ---> 3
+2021-01-27 14:16:15,064:INFO: [epoch 0] lr: 0.001115, train_loss: 0.689944, valid_metric: 0.435190, valid_mean:0.349934, pred_mean:0.349946
+2021-01-27 14:16:22,341:INFO: [epoch 1] lr: 0.002669, train_loss: 0.095135, valid_metric: 0.024286, valid_mean:0.009023, pred_mean:0.008854
+2021-01-27 14:16:29,705:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025434, valid_metric: 0.021248, valid_mean:0.005327, pred_mean:0.005321
+2021-01-27 14:16:36,993:INFO: [epoch 3] lr: 0.002731, train_loss: 0.023899, valid_metric: 0.019736, valid_mean:0.004026, pred_mean:0.003958
+2021-01-27 14:16:44,251:INFO: [epoch 4] lr: 0.002662, train_loss: 0.023002, valid_metric: 0.019036, valid_mean:0.004667, pred_mean:0.004623
+2021-01-27 14:16:51,500:INFO: [epoch 5] lr: 0.002564, train_loss: 0.022853, valid_metric: 0.018604, valid_mean:0.003694, pred_mean:0.003662
+2021-01-27 14:16:58,641:INFO: [epoch 6] lr: 0.002438, train_loss: 0.021958, valid_metric: 0.018819, valid_mean:0.004144, pred_mean:0.004128, NIE +1 ---> 1
+2021-01-27 14:17:05,925:INFO: [epoch 7] lr: 0.002288, train_loss: 0.021516, valid_metric: 0.017763, valid_mean:0.004292, pred_mean:0.004220
+2021-01-27 14:17:13,216:INFO: [epoch 8] lr: 0.002118, train_loss: 0.020941, valid_metric: 0.017539, valid_mean:0.004090, pred_mean:0.004025
+2021-01-27 14:17:20,473:INFO: [epoch 9] lr: 0.001931, train_loss: 0.020393, valid_metric: 0.017456, valid_mean:0.004164, pred_mean:0.004129
+2021-01-27 14:17:27,769:INFO: [epoch 10] lr: 0.001731, train_loss: 0.020230, valid_metric: 0.017276, valid_mean:0.004344, pred_mean:0.004273
+2021-01-27 14:17:35,076:INFO: [epoch 11] lr: 0.001524, train_loss: 0.019850, valid_metric: 0.017244, valid_mean:0.004324, pred_mean:0.004255
+2021-01-27 14:17:42,182:INFO: [epoch 12] lr: 0.001313, train_loss: 0.019569, valid_metric: 0.017272, valid_mean:0.004236, pred_mean:0.004161, NIE +1 ---> 1
+2021-01-27 14:17:49,445:INFO: [epoch 13] lr: 0.001105, train_loss: 0.019406, valid_metric: 0.017195, valid_mean:0.004092, pred_mean:0.004023
+2021-01-27 14:17:56,729:INFO: [epoch 14] lr: 0.000902, train_loss: 0.019036, valid_metric: 0.017161, valid_mean:0.004203, pred_mean:0.004141
+2021-01-27 14:18:03,976:INFO: [epoch 15] lr: 0.000711, train_loss: 0.018717, valid_metric: 0.017153, valid_mean:0.004228, pred_mean:0.004162
+2021-01-27 14:18:11,303:INFO: [epoch 16] lr: 0.000536, train_loss: 0.018591, valid_metric: 0.017144, valid_mean:0.004225, pred_mean:0.004163
+2021-01-27 14:18:18,595:INFO: [epoch 17] lr: 0.000380, train_loss: 0.018407, valid_metric: 0.017142, valid_mean:0.004145, pred_mean:0.004077
+2021-01-27 14:18:25,689:INFO: [epoch 18] lr: 0.000247, train_loss: 0.018149, valid_metric: 0.017143, valid_mean:0.004120, pred_mean:0.004044, NIE +1 ---> 1
+2021-01-27 14:18:32,779:INFO: [epoch 19] lr: 0.000141, train_loss: 0.018086, valid_metric: 0.017162, valid_mean:0.004086, pred_mean:0.004014, NIE +1 ---> 2
+2021-01-27 14:18:39,610:INFO: [epoch 20] lr: 0.000119, train_loss: 0.017989, valid_metric: 0.017143, valid_mean:0.004123, pred_mean:0.004052, NIE +1 ---> 3
+2021-01-27 14:18:46,428:INFO: [epoch 21] lr: 0.000099, train_loss: 0.017894, valid_metric: 0.017148, valid_mean:0.004120, pred_mean:0.004053, NIE +1 ---> 4
+2021-01-27 14:18:53,296:INFO: [epoch 22] lr: 0.000081, train_loss: 0.017912, valid_metric: 0.017145, valid_mean:0.004123, pred_mean:0.004056, NIE +1 ---> 5
+2021-01-27 14:19:01,141:INFO: [epoch 0] lr: 0.001115, train_loss: 0.689422, valid_metric: 0.427425, valid_mean:0.341720, pred_mean:0.340686
+2021-01-27 14:19:08,355:INFO: [epoch 1] lr: 0.002669, train_loss: 0.095317, valid_metric: 0.024940, valid_mean:0.009164, pred_mean:0.009226
+2021-01-27 14:19:15,575:INFO: [epoch 2] lr: 0.002770, train_loss: 0.026031, valid_metric: 0.021733, valid_mean:0.004616, pred_mean:0.004562
+2021-01-27 14:19:22,799:INFO: [epoch 3] lr: 0.002731, train_loss: 0.024468, valid_metric: 0.020391, valid_mean:0.004148, pred_mean:0.004113
+2021-01-27 14:19:30,097:INFO: [epoch 4] lr: 0.002662, train_loss: 0.023537, valid_metric: 0.019224, valid_mean:0.004443, pred_mean:0.004372
+2021-01-27 14:19:37,348:INFO: [epoch 5] lr: 0.002564, train_loss: 0.022442, valid_metric: 0.018681, valid_mean:0.004426, pred_mean:0.004361
+2021-01-27 14:19:44,603:INFO: [epoch 6] lr: 0.002438, train_loss: 0.021625, valid_metric: 0.018081, valid_mean:0.004255, pred_mean:0.004184
+2021-01-27 14:19:51,777:INFO: [epoch 7] lr: 0.002288, train_loss: 0.021541, valid_metric: 0.018017, valid_mean:0.004223, pred_mean:0.004162
+2021-01-27 14:19:58,817:INFO: [epoch 8] lr: 0.002118, train_loss: 0.021019, valid_metric: 0.018536, valid_mean:0.004304, pred_mean:0.004271, NIE +1 ---> 1
+2021-01-27 14:20:06,026:INFO: [epoch 9] lr: 0.001931, train_loss: 0.020890, valid_metric: 0.017792, valid_mean:0.004479, pred_mean:0.004388
+2021-01-27 14:20:13,313:INFO: [epoch 10] lr: 0.001731, train_loss: 0.020348, valid_metric: 0.017617, valid_mean:0.004263, pred_mean:0.004193
+2021-01-27 14:20:20,580:INFO: [epoch 11] lr: 0.001524, train_loss: 0.020003, valid_metric: 0.017437, valid_mean:0.004237, pred_mean:0.004158
+2021-01-27 14:20:27,645:INFO: [epoch 12] lr: 0.001313, train_loss: 0.019818, valid_metric: 0.017490, valid_mean:0.004187, pred_mean:0.004125, NIE +1 ---> 1
+2021-01-27 14:20:34,690:INFO: [epoch 13] lr: 0.001105, train_loss: 0.019395, valid_metric: 0.017467, valid_mean:0.004312, pred_mean:0.004216, NIE +1 ---> 2
+2021-01-27 14:20:41,995:INFO: [epoch 14] lr: 0.000902, train_loss: 0.019238, valid_metric: 0.017397, valid_mean:0.004284, pred_mean:0.004195
+2021-01-27 14:20:49,172:INFO: [epoch 15] lr: 0.000711, train_loss: 0.018963, valid_metric: 0.017399, valid_mean:0.004319, pred_mean:0.004222, NIE +1 ---> 1
+2021-01-27 14:20:56,357:INFO: [epoch 16] lr: 0.000536, train_loss: 0.018848, valid_metric: 0.017366, valid_mean:0.004227, pred_mean:0.004134
+2021-01-27 14:21:03,427:INFO: [epoch 17] lr: 0.000380, train_loss: 0.018620, valid_metric: 0.017387, valid_mean:0.004185, pred_mean:0.004091, NIE +1 ---> 1
+2021-01-27 14:21:10,468:INFO: [epoch 18] lr: 0.000247, train_loss: 0.018452, valid_metric: 0.017382, valid_mean:0.004173, pred_mean:0.004071, NIE +1 ---> 2
+2021-01-27 14:21:17,721:INFO: [epoch 19] lr: 0.000141, train_loss: 0.018380, valid_metric: 0.017365, valid_mean:0.004144, pred_mean:0.004047
+2021-01-27 14:21:24,506:INFO: [epoch 20] lr: 0.000119, train_loss: 0.018227, valid_metric: 0.017373, valid_mean:0.004203, pred_mean:0.004108, NIE +1 ---> 1
+2021-01-27 14:21:31,491:INFO: [epoch 21] lr: 0.000099, train_loss: 0.018210, valid_metric: 0.017363, valid_mean:0.004200, pred_mean:0.004103
+2021-01-27 14:21:38,296:INFO: [epoch 22] lr: 0.000081, train_loss: 0.018151, valid_metric: 0.017364, valid_mean:0.004198, pred_mean:0.004100, NIE +1 ---> 1
+2021-01-27 14:21:47,505:INFO: [epoch 0] lr: 0.001115, train_loss: 0.689655, valid_metric: 0.442751, valid_mean:0.355191, pred_mean:0.355911
+2021-01-27 14:21:54,801:INFO: [epoch 1] lr: 0.002669, train_loss: 0.092663, valid_metric: 0.024581, valid_mean:0.009616, pred_mean:0.009592
+2021-01-27 14:22:02,088:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025391, valid_metric: 0.020332, valid_mean:0.004343, pred_mean:0.004356
+2021-01-27 14:22:09,323:INFO: [epoch 3] lr: 0.002731, train_loss: 0.023788, valid_metric: 0.019094, valid_mean:0.004221, pred_mean:0.004226
+2021-01-27 14:22:16,497:INFO: [epoch 4] lr: 0.002662, train_loss: 0.022404, valid_metric: 0.018264, valid_mean:0.004591, pred_mean:0.004618
+2021-01-27 14:22:23,745:INFO: [epoch 5] lr: 0.002564, train_loss: 0.021581, valid_metric: 0.018044, valid_mean:0.004425, pred_mean:0.004413
+2021-01-27 14:22:30,823:INFO: [epoch 6] lr: 0.002438, train_loss: 0.021560, valid_metric: 0.018139, valid_mean:0.004010, pred_mean:0.003989, NIE +1 ---> 1
+2021-01-27 14:22:38,051:INFO: [epoch 7] lr: 0.002288, train_loss: 0.021241, valid_metric: 0.017615, valid_mean:0.004257, pred_mean:0.004229
+2021-01-27 14:22:45,329:INFO: [epoch 8] lr: 0.002118, train_loss: 0.020538, valid_metric: 0.017454, valid_mean:0.004106, pred_mean:0.004048
+2021-01-27 14:22:52,618:INFO: [epoch 9] lr: 0.001931, train_loss: 0.020091, valid_metric: 0.017352, valid_mean:0.004299, pred_mean:0.004278
+2021-01-27 14:22:59,905:INFO: [epoch 10] lr: 0.001731, train_loss: 0.019641, valid_metric: 0.017304, valid_mean:0.004010, pred_mean:0.003969
+2021-01-27 14:23:07,160:INFO: [epoch 11] lr: 0.001524, train_loss: 0.019485, valid_metric: 0.017277, valid_mean:0.004086, pred_mean:0.004039
+2021-01-27 14:23:14,410:INFO: [epoch 12] lr: 0.001313, train_loss: 0.019046, valid_metric: 0.017198, valid_mean:0.004117, pred_mean:0.004070
+2021-01-27 14:23:21,493:INFO: [epoch 13] lr: 0.001105, train_loss: 0.018951, valid_metric: 0.017331, valid_mean:0.004202, pred_mean:0.004175, NIE +1 ---> 1
+2021-01-27 14:23:28,558:INFO: [epoch 14] lr: 0.000902, train_loss: 0.018615, valid_metric: 0.017287, valid_mean:0.004111, pred_mean:0.004064, NIE +1 ---> 2
+2021-01-27 14:23:35,607:INFO: [epoch 15] lr: 0.000711, train_loss: 0.018351, valid_metric: 0.017241, valid_mean:0.004033, pred_mean:0.003965, NIE +1 ---> 3
+2021-01-27 14:23:42,661:INFO: [epoch 16] lr: 0.000536, train_loss: 0.018033, valid_metric: 0.017328, valid_mean:0.004091, pred_mean:0.004031, NIE +1 ---> 4
+2021-01-27 14:23:49,743:INFO: [epoch 17] lr: 0.000380, train_loss: 0.017895, valid_metric: 0.017306, valid_mean:0.004036, pred_mean:0.003973, NIE +1 ---> 5
+2021-01-27 14:23:56,784:INFO: [epoch 18] lr: 0.000247, train_loss: 0.017676, valid_metric: 0.017311, valid_mean:0.004056, pred_mean:0.003993, NIE +1 ---> 6
+2021-01-27 14:24:03,834:INFO: [epoch 19] lr: 0.000141, train_loss: 0.017589, valid_metric: 0.017311, valid_mean:0.004007, pred_mean:0.003951, NIE +1 ---> 7
+2021-01-27 14:24:10,626:INFO: [epoch 20] lr: 0.000119, train_loss: 0.017408, valid_metric: 0.017330, valid_mean:0.004056, pred_mean:0.003999, NIE +1 ---> 8
+2021-01-27 14:24:17,407:INFO: [epoch 21] lr: 0.000099, train_loss: 0.017412, valid_metric: 0.017342, valid_mean:0.004050, pred_mean:0.003992, NIE +1 ---> 9
+2021-01-27 14:24:24,247:INFO: [epoch 22] lr: 0.000081, train_loss: 0.017289, valid_metric: 0.017341, valid_mean:0.004051, pred_mean:0.003994, NIE +1 ---> 10
+2021-01-27 14:24:32,243:INFO: [epoch 0] lr: 0.001115, train_loss: 0.691087, valid_metric: 0.434526, valid_mean:0.349054, pred_mean:0.348789
+2021-01-27 14:24:39,543:INFO: [epoch 1] lr: 0.002669, train_loss: 0.092457, valid_metric: 0.023321, valid_mean:0.008313, pred_mean:0.008270
+2021-01-27 14:24:46,798:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025628, valid_metric: 0.021191, valid_mean:0.005247, pred_mean:0.005204
+2021-01-27 14:24:54,055:INFO: [epoch 3] lr: 0.002731, train_loss: 0.024462, valid_metric: 0.020692, valid_mean:0.003868, pred_mean:0.003861
+2021-01-27 14:25:01,312:INFO: [epoch 4] lr: 0.002662, train_loss: 0.023731, valid_metric: 0.019322, valid_mean:0.004287, pred_mean:0.004260
+2021-01-27 14:25:08,550:INFO: [epoch 5] lr: 0.002564, train_loss: 0.022899, valid_metric: 0.018558, valid_mean:0.004323, pred_mean:0.004310
+2021-01-27 14:25:15,771:INFO: [epoch 6] lr: 0.002438, train_loss: 0.022022, valid_metric: 0.018245, valid_mean:0.004141, pred_mean:0.004116
+2021-01-27 14:25:23,006:INFO: [epoch 7] lr: 0.002288, train_loss: 0.021443, valid_metric: 0.017537, valid_mean:0.004134, pred_mean:0.004088
+2021-01-27 14:25:30,282:INFO: [epoch 8] lr: 0.002118, train_loss: 0.020833, valid_metric: 0.017341, valid_mean:0.004343, pred_mean:0.004285
+2021-01-27 14:25:37,520:INFO: [epoch 9] lr: 0.001931, train_loss: 0.020379, valid_metric: 0.017266, valid_mean:0.004172, pred_mean:0.004117
+2021-01-27 14:25:44,760:INFO: [epoch 10] lr: 0.001731, train_loss: 0.020031, valid_metric: 0.017230, valid_mean:0.004415, pred_mean:0.004331
+2021-01-27 14:25:51,988:INFO: [epoch 11] lr: 0.001524, train_loss: 0.019563, valid_metric: 0.017059, valid_mean:0.004350, pred_mean:0.004282
+2021-01-27 14:25:59,296:INFO: [epoch 12] lr: 0.001313, train_loss: 0.019205, valid_metric: 0.016967, valid_mean:0.004233, pred_mean:0.004143
+2021-01-27 14:26:06,610:INFO: [epoch 13] lr: 0.001105, train_loss: 0.018966, valid_metric: 0.016911, valid_mean:0.004229, pred_mean:0.004124
+2021-01-27 14:26:13,705:INFO: [epoch 14] lr: 0.000902, train_loss: 0.018635, valid_metric: 0.016911, valid_mean:0.004089, pred_mean:0.004001, NIE +1 ---> 1
+2021-01-27 14:26:20,956:INFO: [epoch 15] lr: 0.000711, train_loss: 0.018260, valid_metric: 0.016895, valid_mean:0.004130, pred_mean:0.004026
+2021-01-27 14:26:28,182:INFO: [epoch 16] lr: 0.000536, train_loss: 0.018068, valid_metric: 0.016858, valid_mean:0.004065, pred_mean:0.003970
+2021-01-27 14:26:35,273:INFO: [epoch 17] lr: 0.000380, train_loss: 0.017783, valid_metric: 0.016867, valid_mean:0.004114, pred_mean:0.004018, NIE +1 ---> 1
+2021-01-27 14:26:42,529:INFO: [epoch 18] lr: 0.000247, train_loss: 0.017629, valid_metric: 0.016852, valid_mean:0.004070, pred_mean:0.003964
+2021-01-27 14:26:49,576:INFO: [epoch 19] lr: 0.000141, train_loss: 0.017550, valid_metric: 0.016854, valid_mean:0.004079, pred_mean:0.003992, NIE +1 ---> 1
+2021-01-27 14:26:56,367:INFO: [epoch 20] lr: 0.000119, train_loss: 0.017265, valid_metric: 0.016865, valid_mean:0.004083, pred_mean:0.003993, NIE +1 ---> 2
+2021-01-27 14:27:03,387:INFO: [epoch 21] lr: 0.000099, train_loss: 0.017296, valid_metric: 0.016850, valid_mean:0.004089, pred_mean:0.003995
+2021-01-27 14:27:10,231:INFO: [epoch 22] lr: 0.000081, train_loss: 0.017257, valid_metric: 0.016854, valid_mean:0.004089, pred_mean:0.003992, NIE +1 ---> 1
+2021-01-27 14:27:18,174:INFO: [epoch 0] lr: 0.001115, train_loss: 0.688740, valid_metric: 0.433352, valid_mean:0.347788, pred_mean:0.347536
+2021-01-27 14:27:25,428:INFO: [epoch 1] lr: 0.002669, train_loss: 0.093363, valid_metric: 0.024382, valid_mean:0.008439, pred_mean:0.008437
+2021-01-27 14:27:32,670:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025519, valid_metric: 0.021267, valid_mean:0.004460, pred_mean:0.004456
+2021-01-27 14:27:39,929:INFO: [epoch 3] lr: 0.002731, train_loss: 0.023795, valid_metric: 0.020270, valid_mean:0.004230, pred_mean:0.004205
+2021-01-27 14:27:47,135:INFO: [epoch 4] lr: 0.002662, train_loss: 0.024943, valid_metric: 0.020083, valid_mean:0.003971, pred_mean:0.003911
+2021-01-27 14:27:54,351:INFO: [epoch 5] lr: 0.002564, train_loss: 0.023318, valid_metric: 0.019507, valid_mean:0.003861, pred_mean:0.003776
+2021-01-27 14:28:01,653:INFO: [epoch 6] lr: 0.002438, train_loss: 0.022789, valid_metric: 0.019287, valid_mean:0.004276, pred_mean:0.004186
+2021-01-27 14:28:08,884:INFO: [epoch 7] lr: 0.002288, train_loss: 0.022245, valid_metric: 0.018949, valid_mean:0.004369, pred_mean:0.004277
+2021-01-27 14:28:16,132:INFO: [epoch 8] lr: 0.002118, train_loss: 0.021837, valid_metric: 0.018776, valid_mean:0.004675, pred_mean:0.004621
+2021-01-27 14:28:23,399:INFO: [epoch 9] lr: 0.001931, train_loss: 0.021649, valid_metric: 0.018253, valid_mean:0.004307, pred_mean:0.004238
+2021-01-27 14:28:30,614:INFO: [epoch 10] lr: 0.001731, train_loss: 0.021192, valid_metric: 0.018217, valid_mean:0.004457, pred_mean:0.004370
+2021-01-27 14:28:37,852:INFO: [epoch 11] lr: 0.001524, train_loss: 0.020712, valid_metric: 0.017963, valid_mean:0.004374, pred_mean:0.004254
+2021-01-27 14:28:45,062:INFO: [epoch 12] lr: 0.001313, train_loss: 0.020509, valid_metric: 0.017779, valid_mean:0.004318, pred_mean:0.004220
+2021-01-27 14:28:52,111:INFO: [epoch 13] lr: 0.001105, train_loss: 0.020582, valid_metric: 0.017810, valid_mean:0.004194, pred_mean:0.004101, NIE +1 ---> 1
+2021-01-27 14:28:59,336:INFO: [epoch 14] lr: 0.000902, train_loss: 0.020258, valid_metric: 0.017747, valid_mean:0.004263, pred_mean:0.004169
+2021-01-27 14:29:06,598:INFO: [epoch 15] lr: 0.000711, train_loss: 0.020198, valid_metric: 0.017690, valid_mean:0.004256, pred_mean:0.004180
+2021-01-27 14:29:13,610:INFO: [epoch 16] lr: 0.000536, train_loss: 0.019865, valid_metric: 0.017720, valid_mean:0.004312, pred_mean:0.004242, NIE +1 ---> 1
+2021-01-27 14:29:20,840:INFO: [epoch 17] lr: 0.000380, train_loss: 0.019805, valid_metric: 0.017586, valid_mean:0.004292, pred_mean:0.004215
+2021-01-27 14:29:28,087:INFO: [epoch 18] lr: 0.000247, train_loss: 0.019603, valid_metric: 0.017576, valid_mean:0.004274, pred_mean:0.004198
+2021-01-27 14:29:35,173:INFO: [epoch 19] lr: 0.000141, train_loss: 0.019524, valid_metric: 0.017584, valid_mean:0.004255, pred_mean:0.004175, NIE +1 ---> 1
+2021-01-27 14:29:42,187:INFO: [epoch 20] lr: 0.000119, train_loss: 0.019436, valid_metric: 0.017544, valid_mean:0.004279, pred_mean:0.004196
+2021-01-27 14:29:49,164:INFO: [epoch 21] lr: 0.000099, train_loss: 0.019365, valid_metric: 0.017538, valid_mean:0.004298, pred_mean:0.004220
+2021-01-27 14:29:56,016:INFO: [epoch 22] lr: 0.000081, train_loss: 0.019335, valid_metric: 0.017542, valid_mean:0.004305, pred_mean:0.004232, NIE +1 ---> 1
+2021-01-27 14:30:04,013:INFO: [epoch 0] lr: 0.001115, train_loss: 0.688796, valid_metric: 0.419583, valid_mean:0.338904, pred_mean:0.337464
+2021-01-27 14:30:11,486:INFO: [epoch 1] lr: 0.002669, train_loss: 0.093600, valid_metric: 0.023783, valid_mean:0.008284, pred_mean:0.008302
+2021-01-27 14:30:18,759:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025141, valid_metric: 0.020599, valid_mean:0.004539, pred_mean:0.004504
+2021-01-27 14:30:25,824:INFO: [epoch 3] lr: 0.002731, train_loss: 0.024010, valid_metric: 0.020827, valid_mean:0.004343, pred_mean:0.004289, NIE +1 ---> 1
+2021-01-27 14:30:33,055:INFO: [epoch 4] lr: 0.002662, train_loss: 0.023814, valid_metric: 0.019735, valid_mean:0.004015, pred_mean:0.003956
+2021-01-27 14:30:40,309:INFO: [epoch 5] lr: 0.002564, train_loss: 0.022675, valid_metric: 0.018839, valid_mean:0.003952, pred_mean:0.003874
+2021-01-27 14:30:47,643:INFO: [epoch 6] lr: 0.002438, train_loss: 0.022014, valid_metric: 0.018676, valid_mean:0.004405, pred_mean:0.004348
+2021-01-27 14:30:54,864:INFO: [epoch 7] lr: 0.002288, train_loss: 0.021488, valid_metric: 0.018183, valid_mean:0.004333, pred_mean:0.004296
+2021-01-27 14:31:02,142:INFO: [epoch 8] lr: 0.002118, train_loss: 0.020892, valid_metric: 0.017914, valid_mean:0.004326, pred_mean:0.004254
+2021-01-27 14:31:09,422:INFO: [epoch 9] lr: 0.001931, train_loss: 0.020664, valid_metric: 0.017736, valid_mean:0.004249, pred_mean:0.004209
+2021-01-27 14:31:16,672:INFO: [epoch 10] lr: 0.001731, train_loss: 0.020324, valid_metric: 0.017693, valid_mean:0.004014, pred_mean:0.003969
+2021-01-27 14:31:24,065:INFO: [epoch 11] lr: 0.001524, train_loss: 0.020004, valid_metric: 0.017538, valid_mean:0.004013, pred_mean:0.003981
+2021-01-27 14:31:31,325:INFO: [epoch 12] lr: 0.001313, train_loss: 0.019613, valid_metric: 0.017478, valid_mean:0.004314, pred_mean:0.004261
+2021-01-27 14:31:38,566:INFO: [epoch 13] lr: 0.001105, train_loss: 0.019401, valid_metric: 0.017361, valid_mean:0.004285, pred_mean:0.004242
+2021-01-27 14:31:45,673:INFO: [epoch 14] lr: 0.000902, train_loss: 0.019120, valid_metric: 0.017379, valid_mean:0.004218, pred_mean:0.004183, NIE +1 ---> 1
+2021-01-27 14:31:52,949:INFO: [epoch 15] lr: 0.000711, train_loss: 0.018952, valid_metric: 0.017337, valid_mean:0.004163, pred_mean:0.004120
+2021-01-27 14:32:00,038:INFO: [epoch 16] lr: 0.000536, train_loss: 0.018735, valid_metric: 0.017419, valid_mean:0.004192, pred_mean:0.004135, NIE +1 ---> 1
+2021-01-27 14:32:07,128:INFO: [epoch 17] lr: 0.000380, train_loss: 0.018475, valid_metric: 0.017364, valid_mean:0.004079, pred_mean:0.004017, NIE +1 ---> 2
+2021-01-27 14:32:14,190:INFO: [epoch 18] lr: 0.000247, train_loss: 0.018420, valid_metric: 0.017350, valid_mean:0.004129, pred_mean:0.004075, NIE +1 ---> 3
+2021-01-27 14:32:21,276:INFO: [epoch 19] lr: 0.000141, train_loss: 0.018279, valid_metric: 0.017342, valid_mean:0.004105, pred_mean:0.004050, NIE +1 ---> 4
+2021-01-27 14:32:28,076:INFO: [epoch 20] lr: 0.000119, train_loss: 0.018170, valid_metric: 0.017343, valid_mean:0.004131, pred_mean:0.004078, NIE +1 ---> 5
+2021-01-27 14:32:34,876:INFO: [epoch 21] lr: 0.000099, train_loss: 0.018081, valid_metric: 0.017341, valid_mean:0.004119, pred_mean:0.004069, NIE +1 ---> 6
+2021-01-27 14:32:41,729:INFO: [epoch 22] lr: 0.000081, train_loss: 0.018108, valid_metric: 0.017342, valid_mean:0.004141, pred_mean:0.004090, NIE +1 ---> 7
+2021-01-27 14:32:49,666:INFO: [epoch 0] lr: 0.001115, train_loss: 0.688611, valid_metric: 0.463974, valid_mean:0.367972, pred_mean:0.369396
+2021-01-27 14:32:56,961:INFO: [epoch 1] lr: 0.002669, train_loss: 0.093203, valid_metric: 0.023615, valid_mean:0.008341, pred_mean:0.008316
+2021-01-27 14:33:04,259:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025782, valid_metric: 0.021171, valid_mean:0.005191, pred_mean:0.005170
+2021-01-27 14:33:11,530:INFO: [epoch 3] lr: 0.002731, train_loss: 0.025263, valid_metric: 0.020561, valid_mean:0.003984, pred_mean:0.003979
+2021-01-27 14:33:18,776:INFO: [epoch 4] lr: 0.002662, train_loss: 0.024336, valid_metric: 0.019725, valid_mean:0.004146, pred_mean:0.004097
+2021-01-27 14:33:26,041:INFO: [epoch 5] lr: 0.002564, train_loss: 0.023585, valid_metric: 0.018978, valid_mean:0.004089, pred_mean:0.004020
+2021-01-27 14:33:33,324:INFO: [epoch 6] lr: 0.002438, train_loss: 0.022968, valid_metric: 0.018461, valid_mean:0.004387, pred_mean:0.004342
+2021-01-27 14:33:40,578:INFO: [epoch 7] lr: 0.002288, train_loss: 0.022368, valid_metric: 0.018175, valid_mean:0.004240, pred_mean:0.004196
+2021-01-27 14:33:47,863:INFO: [epoch 8] lr: 0.002118, train_loss: 0.021863, valid_metric: 0.017991, valid_mean:0.004312, pred_mean:0.004279
+2021-01-27 14:33:55,099:INFO: [epoch 9] lr: 0.001931, train_loss: 0.021474, valid_metric: 0.017785, valid_mean:0.004209, pred_mean:0.004154
+2021-01-27 14:34:02,348:INFO: [epoch 10] lr: 0.001731, train_loss: 0.021096, valid_metric: 0.017610, valid_mean:0.004291, pred_mean:0.004239
+2021-01-27 14:34:09,403:INFO: [epoch 11] lr: 0.001524, train_loss: 0.020719, valid_metric: 0.017619, valid_mean:0.004177, pred_mean:0.004141, NIE +1 ---> 1
+2021-01-27 14:34:16,602:INFO: [epoch 12] lr: 0.001313, train_loss: 0.020492, valid_metric: 0.017371, valid_mean:0.004258, pred_mean:0.004193
+2021-01-27 14:34:23,812:INFO: [epoch 13] lr: 0.001105, train_loss: 0.020238, valid_metric: 0.017296, valid_mean:0.004258, pred_mean:0.004187
+2021-01-27 14:34:31,038:INFO: [epoch 14] lr: 0.000902, train_loss: 0.020041, valid_metric: 0.017167, valid_mean:0.004248, pred_mean:0.004170
+2021-01-27 14:34:38,089:INFO: [epoch 15] lr: 0.000711, train_loss: 0.019831, valid_metric: 0.017177, valid_mean:0.004329, pred_mean:0.004236, NIE +1 ---> 1
+2021-01-27 14:34:45,295:INFO: [epoch 16] lr: 0.000536, train_loss: 0.019733, valid_metric: 0.017128, valid_mean:0.004319, pred_mean:0.004237
+2021-01-27 14:34:52,347:INFO: [epoch 17] lr: 0.000380, train_loss: 0.019519, valid_metric: 0.017166, valid_mean:0.004371, pred_mean:0.004300, NIE +1 ---> 1
+2021-01-27 14:34:59,376:INFO: [epoch 18] lr: 0.000247, train_loss: 0.019321, valid_metric: 0.017150, valid_mean:0.004287, pred_mean:0.004212, NIE +1 ---> 2
+2021-01-27 14:35:06,457:INFO: [epoch 19] lr: 0.000141, train_loss: 0.019221, valid_metric: 0.017152, valid_mean:0.004326, pred_mean:0.004257, NIE +1 ---> 3
+2021-01-27 14:35:13,262:INFO: [epoch 20] lr: 0.000119, train_loss: 0.019071, valid_metric: 0.017153, valid_mean:0.004322, pred_mean:0.004251, NIE +1 ---> 4
+2021-01-27 14:35:20,085:INFO: [epoch 21] lr: 0.000099, train_loss: 0.019095, valid_metric: 0.017142, valid_mean:0.004306, pred_mean:0.004234, NIE +1 ---> 5
+2021-01-27 14:35:26,894:INFO: [epoch 22] lr: 0.000081, train_loss: 0.019146, valid_metric: 0.017139, valid_mean:0.004309, pred_mean:0.004234, NIE +1 ---> 6
+2021-01-27 14:35:36,109:INFO: [epoch 0] lr: 0.001115, train_loss: 0.689495, valid_metric: 0.434476, valid_mean:0.349884, pred_mean:0.351108
+2021-01-27 14:35:43,368:INFO: [epoch 1] lr: 0.002669, train_loss: 0.093809, valid_metric: 0.023784, valid_mean:0.008525, pred_mean:0.008504
+2021-01-27 14:35:50,626:INFO: [epoch 2] lr: 0.002770, train_loss: 0.025853, valid_metric: 0.020705, valid_mean:0.004962, pred_mean:0.004926
+2021-01-27 14:35:57,856:INFO: [epoch 3] lr: 0.002731, train_loss: 0.023945, valid_metric: 0.019473, valid_mean:0.004175, pred_mean:0.004130
+2021-01-27 14:36:05,048:INFO: [epoch 4] lr: 0.002662, train_loss: 0.023067, valid_metric: 0.018410, valid_mean:0.004044, pred_mean:0.003981
+2021-01-27 14:36:12,371:INFO: [epoch 5] lr: 0.002564, train_loss: 0.022063, valid_metric: 0.017672, valid_mean:0.004567, pred_mean:0.004472
+2021-01-27 14:36:19,581:INFO: [epoch 6] lr: 0.002438, train_loss: 0.021624, valid_metric: 0.017474, valid_mean:0.004270, pred_mean:0.004190
+2021-01-27 14:36:26,674:INFO: [epoch 7] lr: 0.002288, train_loss: 0.021379, valid_metric: 0.018073, valid_mean:0.004483, pred_mean:0.004401, NIE +1 ---> 1
+2021-01-27 14:36:33,918:INFO: [epoch 8] lr: 0.002118, train_loss: 0.021002, valid_metric: 0.017253, valid_mean:0.004341, pred_mean:0.004288
+2021-01-27 14:36:41,152:INFO: [epoch 9] lr: 0.001931, train_loss: 0.020438, valid_metric: 0.017027, valid_mean:0.004544, pred_mean:0.004458
+2021-01-27 14:50:36,278:INFO: Loading the datasets...
+2021-01-27 14:50:40,675:INFO: Training dataset of size 5000 x 876
+2021-01-27 14:50:40,675:INFO: Dropping selected features with low variability...
+2021-01-27 14:50:40,756:INFO: Processing features...
+2021-01-27 14:50:46,760:INFO: Model 1: attention DNN (aug = TRUE)...
+2021-01-27 14:50:47,204:INFO: Fold 0 of 5
+2021-01-27 14:50:57,104:INFO: [epoch 0] lr: 0.001115, train_loss: 0.690086, valid_metric: 0.432143, valid_mean:0.346732, pred_mean:0.346862
+2021-01-27 14:51:23,867:INFO: Loading the datasets...
+2021-01-27 14:51:28,110:INFO: Training dataset of size 5000 x 876
+2021-01-27 14:51:28,110:INFO: Dropping selected features with low variability...
+2021-01-27 14:51:28,196:INFO: Processing features...
+2021-01-27 14:51:34,124:INFO: Model 1: attention DNN (aug = TRUE)...
+2021-01-27 14:51:34,564:INFO: Fold 0 of 5
+2021-01-27 14:51:44,355:INFO: [epoch 0] lr: 0.001609, train_loss: 0.246871, valid_metric: 0.026062, valid_mean:0.010624, pred_mean:0.010656
+2021-01-27 14:51:51,701:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026613, valid_metric: 0.022786, valid_mean:0.006651, pred_mean:0.006655
+2021-01-27 14:51:52,224:INFO: Fold 1 of 5
+2021-01-27 14:51:59,621:INFO: [epoch 0] lr: 0.001609, train_loss: 0.246741, valid_metric: 0.024548, valid_mean:0.009877, pred_mean:0.009839
+2021-01-27 14:52:06,897:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026752, valid_metric: 0.022877, valid_mean:0.007743, pred_mean:0.007689
+2021-01-27 14:52:07,419:INFO: Fold 2 of 5
+2021-01-27 14:52:14,820:INFO: [epoch 0] lr: 0.001609, train_loss: 0.246202, valid_metric: 0.025875, valid_mean:0.010572, pred_mean:0.010582
+2021-01-27 14:52:22,101:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026649, valid_metric: 0.022145, valid_mean:0.005491, pred_mean:0.005502
+2021-01-27 14:52:22,674:INFO: Fold 3 of 5
+2021-01-27 14:52:30,065:INFO: [epoch 0] lr: 0.001609, train_loss: 0.244560, valid_metric: 0.025799, valid_mean:0.011345, pred_mean:0.011342
+2021-01-27 14:52:37,370:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026377, valid_metric: 0.022607, valid_mean:0.007021, pred_mean:0.007002
+2021-01-27 14:52:37,899:INFO: Fold 4 of 5
+2021-01-27 14:52:45,359:INFO: [epoch 0] lr: 0.001609, train_loss: 0.245501, valid_metric: 0.025221, valid_mean:0.010493, pred_mean:0.010448
+2021-01-27 14:52:52,649:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026727, valid_metric: 0.022965, valid_mean:0.007429, pred_mean:0.007405
+2021-01-27 14:52:54,480:INFO: Fold 0 of 5
+2021-01-27 14:53:01,880:INFO: [epoch 0] lr: 0.001609, train_loss: 0.245592, valid_metric: 0.025833, valid_mean:0.010990, pred_mean:0.011063
+2021-01-27 14:53:09,139:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026883, valid_metric: 0.022602, valid_mean:0.006767, pred_mean:0.006801
+2021-01-27 14:53:09,666:INFO: Fold 1 of 5
+2021-01-27 14:53:17,084:INFO: [epoch 0] lr: 0.001609, train_loss: 0.245542, valid_metric: 0.024759, valid_mean:0.009901, pred_mean:0.009900
+2021-01-27 14:53:24,379:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026821, valid_metric: 0.022457, valid_mean:0.007044, pred_mean:0.007034
+2021-01-27 14:53:24,898:INFO: Fold 2 of 5
+2021-01-27 14:53:32,337:INFO: [epoch 0] lr: 0.001609, train_loss: 0.245913, valid_metric: 0.027633, valid_mean:0.012699, pred_mean:0.012668
+2021-01-27 14:53:39,598:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026577, valid_metric: 0.023716, valid_mean:0.007481, pred_mean:0.007492
+2021-01-27 14:53:40,130:INFO: Fold 3 of 5
+2021-01-27 14:53:47,577:INFO: [epoch 0] lr: 0.001609, train_loss: 0.245297, valid_metric: 0.026357, valid_mean:0.011170, pred_mean:0.011167
+2021-01-27 14:53:54,886:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026809, valid_metric: 0.023091, valid_mean:0.007209, pred_mean:0.007179
+2021-01-27 14:53:55,421:INFO: Fold 4 of 5
+2021-01-27 14:54:02,857:INFO: [epoch 0] lr: 0.001609, train_loss: 0.244734, valid_metric: 0.025468, valid_mean:0.010449, pred_mean:0.010402
+2021-01-27 14:54:10,143:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026830, valid_metric: 0.022864, valid_mean:0.007403, pred_mean:0.007391
+2021-01-27 14:54:11,953:INFO: Fold 0 of 5
+2021-01-27 14:54:19,362:INFO: [epoch 0] lr: 0.001609, train_loss: 0.246438, valid_metric: 0.024497, valid_mean:0.009726, pred_mean:0.009699
+2021-01-27 14:54:26,640:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026612, valid_metric: 0.022581, valid_mean:0.007028, pred_mean:0.007014
+2021-01-27 14:54:27,161:INFO: Fold 1 of 5
+2021-01-27 14:54:34,556:INFO: [epoch 0] lr: 0.001609, train_loss: 0.244045, valid_metric: 0.025749, valid_mean:0.011448, pred_mean:0.011437
+2021-01-27 14:54:41,845:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026683, valid_metric: 0.022691, valid_mean:0.007273, pred_mean:0.007285
+2021-01-27 14:54:42,365:INFO: Fold 2 of 5
+2021-01-27 14:54:49,837:INFO: [epoch 0] lr: 0.001609, train_loss: 0.243628, valid_metric: 0.025907, valid_mean:0.011013, pred_mean:0.011058
+2021-01-27 14:54:57,128:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026531, valid_metric: 0.023003, valid_mean:0.007192, pred_mean:0.007182
+2021-01-27 14:54:57,658:INFO: Fold 3 of 5
+2021-01-27 14:55:05,060:INFO: [epoch 0] lr: 0.001609, train_loss: 0.245507, valid_metric: 0.025535, valid_mean:0.008954, pred_mean:0.008901
+2021-01-27 14:55:12,349:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026529, valid_metric: 0.023581, valid_mean:0.006060, pred_mean:0.006031
+2021-01-27 14:55:12,880:INFO: Fold 4 of 5
+2021-01-27 14:55:20,300:INFO: [epoch 0] lr: 0.001609, train_loss: 0.246974, valid_metric: 0.025644, valid_mean:0.011227, pred_mean:0.011196
+2021-01-27 14:55:27,593:INFO: [epoch 1] lr: 0.000000, train_loss: 0.026470, valid_metric: 0.022776, valid_mean:0.007299, pred_mean:0.007274
+2021-01-27 14:55:28,966:INFO: Model 2: TabNet (aug = TRUE)...
+2021-01-27 14:55:29,382:INFO: Fold 0 of 5
+2021-01-27 14:55:38,155:INFO: [epoch 0] lr: 0.002146, train_loss: 0.213734, valid_metric: 0.023047, valid_mean:0.006865, pred_mean:0.006857
+2021-01-27 14:55:46,621:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025277, valid_metric: 0.021894, valid_mean:0.005393, pred_mean:0.005372
+2021-01-27 14:55:47,260:INFO: Fold 1 of 5
+2021-01-27 14:55:55,333:INFO: [epoch 0] lr: 0.002146, train_loss: 0.214010, valid_metric: 0.022964, valid_mean:0.006862, pred_mean:0.006839
+2021-01-27 14:56:03,318:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025207, valid_metric: 0.021909, valid_mean:0.005376, pred_mean:0.005358
+2021-01-27 14:56:03,951:INFO: Fold 2 of 5
+2021-01-27 14:56:12,040:INFO: [epoch 0] lr: 0.002146, train_loss: 0.213404, valid_metric: 0.022662, valid_mean:0.006722, pred_mean:0.006689
+2021-01-27 14:56:20,038:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025192, valid_metric: 0.021636, valid_mean:0.005371, pred_mean:0.005347
+2021-01-27 14:56:20,678:INFO: Fold 3 of 5
+2021-01-27 14:56:28,809:INFO: [epoch 0] lr: 0.002146, train_loss: 0.213428, valid_metric: 0.023031, valid_mean:0.007010, pred_mean:0.006960
+2021-01-27 14:56:36,816:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025265, valid_metric: 0.021407, valid_mean:0.005228, pred_mean:0.005174
+2021-01-27 14:56:37,456:INFO: Fold 4 of 5
+2021-01-27 14:56:45,667:INFO: [epoch 0] lr: 0.002146, train_loss: 0.214285, valid_metric: 0.023081, valid_mean:0.006330, pred_mean:0.006297
+2021-01-27 14:56:53,676:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025200, valid_metric: 0.021796, valid_mean:0.005092, pred_mean:0.005045
+2021-01-27 14:56:55,682:INFO: Fold 0 of 5
+2021-01-27 14:57:03,870:INFO: [epoch 0] lr: 0.002146, train_loss: 0.212508, valid_metric: 0.023314, valid_mean:0.006974, pred_mean:0.007011
+2021-01-27 14:57:11,844:INFO: [epoch 1] lr: 0.000000, train_loss: 0.024907, valid_metric: 0.022015, valid_mean:0.005216, pred_mean:0.005196
+2021-01-27 14:57:12,495:INFO: Fold 1 of 5
+2021-01-27 14:57:20,664:INFO: [epoch 0] lr: 0.002146, train_loss: 0.215299, valid_metric: 0.023998, valid_mean:0.006860, pred_mean:0.006800
+2021-01-27 14:57:28,669:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025076, valid_metric: 0.021798, valid_mean:0.005188, pred_mean:0.005127
+2021-01-27 14:57:29,305:INFO: Fold 2 of 5
+2021-01-27 14:57:37,469:INFO: [epoch 0] lr: 0.002146, train_loss: 0.215537, valid_metric: 0.023515, valid_mean:0.006448, pred_mean:0.006422
+2021-01-27 14:57:45,482:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025116, valid_metric: 0.021683, valid_mean:0.005225, pred_mean:0.005190
+2021-01-27 14:57:46,129:INFO: Fold 3 of 5
+2021-01-27 14:57:54,268:INFO: [epoch 0] lr: 0.002146, train_loss: 0.213369, valid_metric: 0.023205, valid_mean:0.006985, pred_mean:0.006942
+2021-01-27 14:58:02,254:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025216, valid_metric: 0.021745, valid_mean:0.005385, pred_mean:0.005358
+2021-01-27 14:58:02,902:INFO: Fold 4 of 5
+2021-01-27 14:58:11,039:INFO: [epoch 0] lr: 0.002146, train_loss: 0.214593, valid_metric: 0.023085, valid_mean:0.007115, pred_mean:0.007095
+2021-01-27 14:58:19,023:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025353, valid_metric: 0.021714, valid_mean:0.005276, pred_mean:0.005242
+2021-01-27 14:58:20,973:INFO: Fold 0 of 5
+2021-01-27 14:58:29,095:INFO: [epoch 0] lr: 0.002146, train_loss: 0.214095, valid_metric: 0.023033, valid_mean:0.006520, pred_mean:0.006530
+2021-01-27 14:58:37,041:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025299, valid_metric: 0.022086, valid_mean:0.005319, pred_mean:0.005291
+2021-01-27 14:58:37,688:INFO: Fold 1 of 5
+2021-01-27 14:58:45,813:INFO: [epoch 0] lr: 0.002146, train_loss: 0.214781, valid_metric: 0.022687, valid_mean:0.006808, pred_mean:0.006752
+2021-01-27 14:58:53,766:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025119, valid_metric: 0.022008, valid_mean:0.005458, pred_mean:0.005396
+2021-01-27 14:58:54,404:INFO: Fold 2 of 5
+2021-01-27 14:59:02,482:INFO: [epoch 0] lr: 0.002146, train_loss: 0.215991, valid_metric: 0.022895, valid_mean:0.006821, pred_mean:0.006804
+2021-01-27 14:59:10,445:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025225, valid_metric: 0.021468, valid_mean:0.005202, pred_mean:0.005181
+2021-01-27 14:59:11,087:INFO: Fold 3 of 5
+2021-01-27 14:59:19,260:INFO: [epoch 0] lr: 0.002146, train_loss: 0.213726, valid_metric: 0.024114, valid_mean:0.007315, pred_mean:0.007303
+2021-01-27 14:59:27,228:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025166, valid_metric: 0.021645, valid_mean:0.005260, pred_mean:0.005239
+2021-01-27 14:59:27,867:INFO: Fold 4 of 5
+2021-01-27 14:59:36,054:INFO: [epoch 0] lr: 0.002146, train_loss: 0.214307, valid_metric: 0.023245, valid_mean:0.007002, pred_mean:0.006950
+2021-01-27 14:59:44,050:INFO: [epoch 1] lr: 0.000000, train_loss: 0.025135, valid_metric: 0.021751, valid_mean:0.005315, pred_mean:0.005287
+2021-01-27 14:59:45,575:INFO: Model 3: DNN (aug = TRUE)...
+2021-01-27 14:59:46,007:INFO: Fold 0 of 5
+2021-01-27 14:59:53,028:INFO: [epoch 0] lr: 0.005518, train_loss: 0.153001, valid_metric: 0.020831, valid_mean:0.004022, pred_mean:0.003993
+2021-01-27 14:59:59,821:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024348, valid_metric: 0.020472, valid_mean:0.003992, pred_mean:0.003956
+2021-01-27 15:00:00,154:INFO: Fold 1 of 5
+2021-01-27 15:00:07,631:INFO: [epoch 0] lr: 0.005518, train_loss: 0.154444, valid_metric: 0.021015, valid_mean:0.004197, pred_mean:0.004151
+2021-01-27 15:00:14,409:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024403, valid_metric: 0.020695, valid_mean:0.003903, pred_mean:0.003861
+2021-01-27 15:00:14,751:INFO: Fold 2 of 5
+2021-01-27 15:00:21,766:INFO: [epoch 0] lr: 0.005518, train_loss: 0.153095, valid_metric: 0.020547, valid_mean:0.003973, pred_mean:0.003961
+2021-01-27 15:00:28,584:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024144, valid_metric: 0.020247, valid_mean:0.004054, pred_mean:0.004024
+2021-01-27 15:00:28,927:INFO: Fold 3 of 5
+2021-01-27 15:00:35,930:INFO: [epoch 0] lr: 0.005518, train_loss: 0.153336, valid_metric: 0.020842, valid_mean:0.003994, pred_mean:0.003980
+2021-01-27 15:00:43,135:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024174, valid_metric: 0.020596, valid_mean:0.004004, pred_mean:0.003982
+2021-01-27 15:00:43,475:INFO: Fold 4 of 5
+2021-01-27 15:00:50,492:INFO: [epoch 0] lr: 0.005518, train_loss: 0.153955, valid_metric: 0.021629, valid_mean:0.003959, pred_mean:0.003952
+2021-01-27 15:00:57,345:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024033, valid_metric: 0.020968, valid_mean:0.003923, pred_mean:0.003859
+2021-01-27 15:00:58,976:INFO: Fold 0 of 5
+2021-01-27 15:01:06,013:INFO: [epoch 0] lr: 0.005518, train_loss: 0.153712, valid_metric: 0.020935, valid_mean:0.004030, pred_mean:0.003988
+2021-01-27 15:01:12,855:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024136, valid_metric: 0.020535, valid_mean:0.003964, pred_mean:0.003929
+2021-01-27 15:01:13,195:INFO: Fold 1 of 5
+2021-01-27 15:01:20,172:INFO: [epoch 0] lr: 0.005518, train_loss: 0.153660, valid_metric: 0.020500, valid_mean:0.004217, pred_mean:0.004202
+2021-01-27 15:01:27,015:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024247, valid_metric: 0.020148, valid_mean:0.003888, pred_mean:0.003877
+2021-01-27 15:01:27,398:INFO: Fold 2 of 5
+2021-01-27 15:01:34,418:INFO: [epoch 0] lr: 0.005518, train_loss: 0.153662, valid_metric: 0.020835, valid_mean:0.004195, pred_mean:0.004141
+2021-01-27 15:01:41,262:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024221, valid_metric: 0.020392, valid_mean:0.004037, pred_mean:0.003985
+2021-01-27 15:01:41,601:INFO: Fold 3 of 5
+2021-01-27 15:01:48,640:INFO: [epoch 0] lr: 0.005518, train_loss: 0.153661, valid_metric: 0.021048, valid_mean:0.004127, pred_mean:0.004059
+2021-01-27 15:01:55,457:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024073, valid_metric: 0.020612, valid_mean:0.004087, pred_mean:0.004031
+2021-01-27 15:01:55,786:INFO: Fold 4 of 5
+2021-01-27 15:02:02,823:INFO: [epoch 0] lr: 0.005518, train_loss: 0.154206, valid_metric: 0.021348, valid_mean:0.004117, pred_mean:0.004069
+2021-01-27 15:02:09,671:INFO: [epoch 1] lr: 0.000001, train_loss: 0.023999, valid_metric: 0.020987, valid_mean:0.003973, pred_mean:0.003939
+2021-01-27 15:02:11,342:INFO: Fold 0 of 5
+2021-01-27 15:02:18,396:INFO: [epoch 0] lr: 0.005518, train_loss: 0.152692, valid_metric: 0.020925, valid_mean:0.004186, pred_mean:0.004157
+2021-01-27 15:02:25,240:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024314, valid_metric: 0.020604, valid_mean:0.003935, pred_mean:0.003911
+2021-01-27 15:02:25,575:INFO: Fold 1 of 5
+2021-01-27 15:02:32,612:INFO: [epoch 0] lr: 0.005518, train_loss: 0.154826, valid_metric: 0.020949, valid_mean:0.004003, pred_mean:0.003990
+2021-01-27 15:02:39,454:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024187, valid_metric: 0.020522, valid_mean:0.003971, pred_mean:0.003944
+2021-01-27 15:02:39,794:INFO: Fold 2 of 5
+2021-01-27 15:02:46,850:INFO: [epoch 0] lr: 0.005518, train_loss: 0.151719, valid_metric: 0.020521, valid_mean:0.003974, pred_mean:0.003917
+2021-01-27 15:02:53,687:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024200, valid_metric: 0.020351, valid_mean:0.003991, pred_mean:0.003926
+2021-01-27 15:02:54,024:INFO: Fold 3 of 5
+2021-01-27 15:03:01,067:INFO: [epoch 0] lr: 0.005518, train_loss: 0.152713, valid_metric: 0.021358, valid_mean:0.004146, pred_mean:0.004082
+2021-01-27 15:03:07,899:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024083, valid_metric: 0.020877, valid_mean:0.004043, pred_mean:0.003990
+2021-01-27 15:03:08,237:INFO: Fold 4 of 5
+2021-01-27 15:03:15,279:INFO: [epoch 0] lr: 0.005518, train_loss: 0.152747, valid_metric: 0.020915, valid_mean:0.004078, pred_mean:0.004038
+2021-01-27 15:03:22,117:INFO: [epoch 1] lr: 0.000001, train_loss: 0.024240, valid_metric: 0.020556, valid_mean:0.003882, pred_mean:0.003841
+2021-01-27 15:03:23,321:INFO: Averaging model predictions ...
+2021-01-27 15:03:24,188:INFO: oof mean:0.005423,sub mean:0.005395,valid metric:0.021414
+2021-01-27 15:03:28,396:INFO: done!

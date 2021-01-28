@@ -439,7 +439,7 @@ class Self_Attention(nn.Module):
         return outputs
 
 class Attention_dnn(nn.Module):
-    def __init__(self, num_features, num_targets, hidden_size0, hidden_size, num_attention_heads, attention_probs_dropout_prob):
+    def __init__(self, num_features, num_targets, num_targets2, hidden_size0, hidden_size, num_attention_heads, attention_probs_dropout_prob):
         super().__init__()
         self.batch_norm = nn.BatchNorm1d(num_features)
         self.dense1 = nn.utils.weight_norm(nn.Linear(num_features, hidden_size0))
@@ -462,7 +462,7 @@ class Attention_dnn(nn.Module):
         self.dropout4 = nn.Dropout(0.2619422201258426)
 
         self.dense4 = nn.utils.weight_norm(nn.Linear(hidden_size, num_targets))
-        self.dense5 = nn.utils.weight_norm(nn.Linear(hidden_size, 402))
+        self.dense5 = nn.utils.weight_norm(nn.Linear(hidden_size, num_targets2))
 
     def forward(self, x):
         x = self.batch_norm(x)
@@ -566,7 +566,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
             scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer=optimizer, pct_start=0.1, div_factor=1e3,
                                               max_lr=1/90.0/3, epochs=EPOCHS, steps_per_epoch=len(train_data_loader))
         elif mn == 'attention_dnn':
-            model = Attention_dnn(len(features),len(targets),256,1500,2,0.3)
+            model = Attention_dnn(len(features),len(targets),len(nonscored_targets),256,1500,2,0.3)
             optimizer = torch.optim.Adam(model.parameters(),betas=(0.9, 0.99), lr=1e-3, weight_decay=1.00e-5/4.75,eps=1e-5)
             scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer=optimizer, pct_start=0.1, div_factor=1e3,
                                               max_lr=1/90.0/4, epochs=EPOCHS, steps_per_epoch=len(train_data_loader))

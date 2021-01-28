@@ -92,11 +92,11 @@ train_drug      = pd.read_csv(files[4])
 sub             = pd.read_csv(files[5])
 
 # testing
-if (params.use_subset): 
-  train           = train.iloc[:5000, ]
-  train_nonscored = train_nonscored.iloc[:5000, ]
-  train_target    = train_target.iloc[:5000, ]
-  train_drug      = train_drug.iloc[:5000, ]
+#if params.use_subset: 
+#  train           = train.iloc[:5000, ]
+#  train_nonscored = train_nonscored.iloc[:5000, ]
+#  train_target    = train_target.iloc[:5000, ]
+#  train_drug      = train_drug.iloc[:5000, ]
 
 logging.info("Training dataset of size {} x {}".format(train.shape[0], train.shape[1]))
 

@@ -2,3 +2,6 @@ data/from_kaggle
 __pycache__
 *.log 
 *.ckpt
+*.out
+*.err
+data/*

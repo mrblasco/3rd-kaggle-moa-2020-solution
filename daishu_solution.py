@@ -43,6 +43,7 @@ def Parse_args():
 
 args = Parse_args()
 
+logging.info("Loading params.json from {}".format(args.model_dir))
 json_path = os.path.join(args.model_dir, 'params.json')   
 assert os.path.isfile(json_path), "No json file found at {}".format(json_path)
 params = utils.Params(json_path)
@@ -82,7 +83,7 @@ files = ['%s/test_features.csv'%args.input_dir,
          '%s/train_drug.csv'%args.input_dir,
          '%s/sample_submission.csv'%args.input_dir]
  
-logging.info("Loading the datasets...")  
+logging.info("Loading the datasets from {}".format(args.input_dir))  
 
 test            = pd.read_csv(files[0])
 train_target    = pd.read_csv(files[1])
@@ -91,14 +92,18 @@ train_nonscored = pd.read_csv(files[3])
 train_drug      = pd.read_csv(files[4])
 sub             = pd.read_csv(files[5])
 
+# If testing, keep only first 5,000 rows 
 if params.use_subset == "True": 
-  train           = train.iloc[:5000, ]
-  train_nonscored = train_nonscored.iloc[:5000, ]
-  train_target    = train_target.iloc[:5000, ]
-  train_drug      = train_drug.iloc[:5000, ]
+    train           = train.iloc[:5000, ]
+
+# keep datasets aligned by rows (axis = 0) 
+(train_target, _)     = train_target.align(train, axis = 0, join = 'inner')
+(train_nonscored, _)  = train_nonscored.align(train, axis = 0, join = 'inner')
+(train_drug, _)       = train_drug.align(train, axis = 0, join = 'inner')
 
 logging.info("Training dataset of size {} x {}".format(train.shape[0], train.shape[1]))
-
+logging.info("Training targets of size {} x {}".format(train_target.shape[0], train_target.shape[1]))
+logging.info("Testing dataset of size {} x {}".format(test.shape[0], test.shape[1]))
 
 logging.info("Dropping selected features with low variability...")  
 

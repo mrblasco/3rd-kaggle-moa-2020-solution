@@ -129,7 +129,7 @@ ctl_train = train.loc[train['cp_type']=='ctl_vehicle'].append(test.loc[test['cp_
 
 def Feature(df):
     transformers = {}
-    for col in tqdm(genes+cells):
+    for col in (genes+cells):
         transformer = QuantileTransformer(n_quantiles=100,random_state=0, output_distribution='normal')
         transformer.fit(df[:train.shape[0]][col].values.reshape(-1,1))#transformer.fit(df[col].values.reshape(-1,1))
         df[col] = transformer.transform(df[col].values.reshape(-1,1)).reshape(1,-1)[0]
@@ -190,7 +190,7 @@ def Ctl_augment(train,target,train_nonscored):
         aug_targets.append(aug_train[targets+nonscored_targets])
     df = pd.concat(aug_trains).reset_index(drop=True)
     target = pd.concat(aug_targets).reset_index(drop=True)
-    for col in tqdm(genes+cells):
+    for col in (genes+cells):
         df[col] = transformers[col].transform(df[col].values.reshape(-1,1)).reshape(1,-1)[0]
     pca_genes = gene_pca.transform(df[genes])
     pca_cells = cell_pca.transform(df[cells])
@@ -655,14 +655,14 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
         eval_train_loss += train_loss
         print('eval_train_loss:',train_loss)
         valid_preds = []
-        for data in tqdm(valid_data_loader):
+        for data in (valid_data_loader):
             x,y = [d.to(device) for d in data]
             with torch.no_grad():
                 outputs,_ = model(x)
             valid_preds.extend(list(outputs.cpu().detach().numpy()))
         oof.loc[val_ind,targets] = 1 / (1+np.exp(-np.array(valid_preds)))
         t_preds = []
-        for data in tqdm(test_data_loader):
+        for data in (test_data_loader):
             x = data[0].to(device)
             with torch.no_grad():
                 outputs,_ = model(x)

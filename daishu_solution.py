@@ -492,7 +492,7 @@ class Attention_dnn(nn.Module):
         return y,y1
 
 class Dnn(nn.Module):
-    def __init__(self, num_features, num_targets, hidden_size):
+    def __init__(self, num_features, num_targets, num_targets2, hidden_size):
         super(Dnn, self).__init__()
         self.batch_norm1 = nn.BatchNorm1d(num_features)
         self.dense1 = nn.utils.weight_norm(nn.Linear(num_features, hidden_size))
@@ -510,7 +510,7 @@ class Dnn(nn.Module):
         self.dropout4 = nn.Dropout(0.2619422201258426)
 
         self.dense4 = nn.utils.weight_norm(nn.Linear(hidden_size, num_targets))
-        self.dense5 = nn.utils.weight_norm(nn.Linear(hidden_size, 402))
+        self.dense5 = nn.utils.weight_norm(nn.Linear(hidden_size, num_targets2))
 
     def forward(self, x):
         x = self.batch_norm1(x)
@@ -571,7 +571,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
             scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer=optimizer, pct_start=0.1, div_factor=1e3,
                                               max_lr=1/90.0/4, epochs=EPOCHS, steps_per_epoch=len(train_data_loader))
         else:
-            model = Dnn(len(features),len(targets),1500)
+            model = Dnn(len(features),len(targets),len(nonscored_targets), 1500)
             optimizer = torch.optim.Adam(model.parameters(),betas=(0.9, 0.99), lr=1e-3, weight_decay=1.00e-5/6,eps=1e-5)
             scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer=optimizer, pct_start=0.1, div_factor=1e3,
                                               max_lr=1/90.0/3.5*3, epochs=EPOCHS, steps_per_epoch=len(train_data_loader))

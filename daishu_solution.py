@@ -43,7 +43,6 @@ def Parse_args():
 
 args = Parse_args()
 
-logging.info("Loading params.json from {}".format(args.model_dir))
 json_path = os.path.join(args.model_dir, 'params.json')   
 assert os.path.isfile(json_path), "No json file found at {}".format(json_path)
 params = utils.Params(json_path)
@@ -242,7 +241,7 @@ class SmoothBCEwLogits(_WeightedLoss):
         return loss
 
 class Model(nn.Module):
-    def __init__(self, num_features, num_targets, hidden_size):
+    def __init__(self, num_features, num_targets, num_targets2, hidden_size):
         super(Model, self).__init__()
         self.batch_norm1 = nn.BatchNorm1d(num_features)
         self.dense1 = nn.utils.weight_norm(nn.Linear(num_features, hidden_size))
@@ -254,7 +253,7 @@ class Model(nn.Module):
         self.batch_norm3 = nn.BatchNorm1d(hidden_size)
         self.dropout3 = nn.Dropout(0.2619422201258426)
         self.dense3 = nn.utils.weight_norm(nn.Linear(hidden_size, num_targets))
-        self.dense4 = nn.utils.weight_norm(nn.Linear(hidden_size, 402))
+        self.dense4 = nn.utils.weight_norm(nn.Linear(hidden_size, num_targets2))
     def forward(self, x):
         x = self.batch_norm1(x)
         x = F.leaky_relu(self.dense1(x))
@@ -356,7 +355,7 @@ class DecisionStep(nn.Module):
         return x,loss,priors
 
 class TabNet(nn.Module):
-    def __init__(self,inp_dim,final_out_dim,n_d=64,n_a=64,n_shared=2,n_ind=2,n_steps=5,relax=1.2,vbs=128):
+    def __init__(self,inp_dim,final_out_dim,final_out_dim2,n_d=64,n_a=64,n_shared=2,n_ind=2,n_steps=5,relax=1.2,vbs=128):
         super().__init__()
         if n_shared>0:
             self.shared = nn.ModuleList()
@@ -369,7 +368,7 @@ class TabNet(nn.Module):
         self.steps = nn.ModuleList()
         for x in range(n_steps-1):
             self.steps.append(DecisionStep(inp_dim,n_d,n_a,self.shared,n_ind,relax,vbs))
-        self.fc = Model(n_d,final_out_dim,1500)
+        self.fc = Model(n_d,final_out_dim, final_out_dim2, 1500) # add second targets 
         self.bn = nn.BatchNorm1d(inp_dim)
         self.n_d = n_d
     def forward(self,x):
@@ -561,7 +560,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
         valid_data_loader = DataLoader(dataset=TensorDataset(torch.Tensor(valid_X),torch.Tensor(valid_Y)),batch_size=1024,shuffle=False)
 
         if mn == 'tabnet':
-            model = TabNet(len(features),len(targets),n_d=128,n_a=256,n_shared=1,n_ind=1,n_steps=3,relax=2.,vbs=128)
+            model = TabNet(len(features),len(targets),len(nonscored_targets), n_d=128,n_a=256,n_shared=1,n_ind=1,n_steps=3,relax=2.,vbs=128)
             optimizer = torch.optim.Adam(model.parameters(),betas=(0.9, 0.99), lr=1e-3, weight_decay=1.00e-5/5,eps=1e-5)
             scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer=optimizer, pct_start=0.1, div_factor=1e3,
                                               max_lr=1/90.0/3, epochs=EPOCHS, steps_per_epoch=len(train_data_loader))

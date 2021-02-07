@@ -439,7 +439,8 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
     preds = []
     test_X = test[features].values
     test_data_loader = DataLoader(dataset=TensorDataset(torch.Tensor(test_X))
-                                , batch_size=128, shuffle=False)
+                                , batch_size = 128
+                                , shuffle = False)
     eval_train_loss = 0
     for fold, (trn_ind, val_ind) in enumerate(MultilabelStratifiedKFold(n_splits = folds, shuffle=True, random_state=seed)\
                                               .split(train, train_target[targets])):
@@ -461,7 +462,8 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
 
         eval_train_data_loader = DataLoader(dataset=TensorDataset(torch.Tensor(eval_train_X)
                                             , torch.Tensor(eval_train_Y))
-                                            , batch_size=128,shuffle=False, drop_last=False)
+                                            , batch_size=128,shuffle=False
+                                            , drop_last=False)
         train_data_loader = DataLoader(dataset=TensorDataset(torch.Tensor(train_X)
                                       , torch.Tensor(train_Y), torch.Tensor(train_Y1))
                                       , batch_size=128,shuffle=True, drop_last=True)
@@ -492,6 +494,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
         not_improve_epochs = 0
 
         for epoch in range(EPOCHS):
+            logging.info("Epoch {} ouf of {}".format(epoch+1, EPOCHS))
             if epoch > 0 and aug:
                 aug_X,aug_Y,aug_Y1 = Ctl_augment(ori_train.loc[trn_ind],train_target.loc[trn_ind],train_nonscored.loc[trn_ind])
                 train_X = np.concatenate([eval_train_X,aug_X],axis=0)
@@ -635,7 +638,6 @@ sub             = pd.read_csv(files[5])
 (train_nonscored, _)  = train_nonscored.align(train, axis = 0, join = 'inner')
 (train_drug, _)       = train_drug.align(train, axis = 0, join = 'inner')
 
-# info 
 logging.info("Training dataset of size {} x {}".format(train.shape[0], train.shape[1]))
 logging.info("Training targets of size {} x {}".format(train_target.shape[0], train_target.shape[1]))
 logging.info("Testing dataset of size {} x {}".format(test.shape[0], test.shape[1]))
@@ -654,8 +656,8 @@ drop_cols = ['g-513', 'g-370', 'g-707', 'g-300', 'g-130', 'g-375', 'g-161',
        'g-497', 'g-550', 'g-555', 'g-584', 'g-592', 'g-682', 'g-692',
        'g-707', 'g-748', 'g-751']
 drop_cols = list(set(drop_cols))
-train.drop(drop_cols,axis=1,inplace=True)
-test.drop(drop_cols,axis=1,inplace=True)
+train.drop(drop_cols, axis=1, inplace=True)
+test.drop(drop_cols, axis=1, inplace=True)
 
 genes = [col for col in train.columns if col.startswith("g-")]
 cells = [col for col in train.columns if col.startswith("c-")]

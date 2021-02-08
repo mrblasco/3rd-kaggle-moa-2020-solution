@@ -55,7 +55,8 @@ def Metric(labels, preds):
 def Feature(df):
     transformers = {}
     for col in (genes+cells):
-        transformer = QuantileTransformer(n_quantiles=100, random_state=0, output_distribution='normal')
+        transformer = QuantileTransformer(n_quantiles=100
+                      , random_state=0, output_distribution='normal')
         transformer.fit(df[:train.shape[0]][col].values.reshape(-1,1))
         df[col] = transformer.transform(df[col].values.reshape(-1,1)).reshape(1,-1)[0]
         transformers[col] = transformer
@@ -543,6 +544,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                     outputs,_ = model(x)
                 t_preds.extend(list(outputs.sigmoid().cpu().detach().numpy()))
             pred_mean = np.mean(t_preds)
+            
             if valid_loss < best_valid_metric:
                 fname = os.path.join(args.model_dir, 'model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold))
                 torch.save(model.state_dict(), fname)
@@ -570,7 +572,8 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
             train_preds.extend(list(outputs.sigmoid().cpu().detach().numpy()))
         train_loss = Metric(eval_train_Y,train_preds)
         eval_train_loss += train_loss
-        print('eval_train_loss:',train_loss)
+        print('eval_train_loss:', train_loss)
+        
         valid_preds = []
         for data in (valid_data_loader):
             x,y = [d.to(device) for d in data]
@@ -578,13 +581,14 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 outputs,_ = model(x)
             valid_preds.extend(list(outputs.cpu().detach().numpy()))
         oof.loc[val_ind,targets] = 1 / (1+np.exp(-np.array(valid_preds)))
+        
         t_preds = []
         for data in (test_data_loader):
             x = data[0].to(device)
             with torch.no_grad():
                 outputs,_ = model(x)
             t_preds.extend(list(outputs.sigmoid().cpu().detach().numpy()))
-        print(np.mean(1 / (1+np.exp(-np.array(valid_preds)))),np.mean(t_preds))
+        print(np.mean(1 / (1+np.exp(-np.array(valid_preds)))), np.mean(t_preds))
         preds.append(t_preds)
         del train_X,train_Y,valid_X,valid_Y,train_data_loader,valid_data_loader
 
@@ -592,7 +596,8 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
     print('eval_train_loss:', eval_train_loss/folds
                             , oof[targets].mean().mean()
                             , sub[targets].mean().mean())
-    logging.info('valid_metric:%.6f'%Metric(train_target[targets].values,oof[targets].values))
+    logging.info('valid_metric:%.6f'%Metric(train_target[targets].values
+                                          , oof[targets].values))
     return oof,sub
 
 
@@ -617,7 +622,7 @@ utils.set_logger(os.path.join(args.model_dir, 'train.log'))
 
 Seed_everything(seed=42)
 
-files = ['%s/test_features.csv'%args.input_dir,
+files = ['%s/test_features_calibr.csv'%args.input_dir,
          '%s/train_targets_scored.csv'%args.input_dir,
          '%s/train_features.csv'%args.input_dir,
          '%s/train_targets_nonscored.csv'%args.input_dir,

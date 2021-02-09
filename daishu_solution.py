@@ -434,16 +434,21 @@ class Dnn(nn.Module):
         return y,y1
 
 def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
+    
+    # Initialize arrays
     oof = train[['sig_id']]
     for t in targets:
         oof[t] = 0.0
     preds = []
+    
+    # Split test in batches 
     test_X = test[features].values
     test_data_loader = DataLoader(dataset=TensorDataset(torch.Tensor(test_X))
                                 , batch_size = 128
                                 , shuffle = False)
+    
     eval_train_loss = 0
-    for fold, (trn_ind, val_ind) in enumerate(MultilabelStratifiedKFold(n_splits = folds, shuffle=True, random_state=seed)\
+    for fold, (trn_ind, val_ind) in enumerate(MultilabelStratifiedKFold(n_splits = folds, shuffle = True, random_state=seed)\
                                               .split(train, train_target[targets])):
         logging.info("[seed {}] fold {} of {}".format(seed, fold, folds))
         train_X = train.loc[trn_ind,features].values
@@ -453,11 +458,11 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
         eval_train_Y = train_Y.copy()
         eval_train_Y1 = train_Y1.copy()
         if aug:
-            aug_X,aug_Y,aug_Y1 = Ctl_augment(ori_train.loc[trn_ind],train_target.loc[trn_ind],train_nonscored.loc[trn_ind])
+            aug_X,aug_Y,aug_Y1 = Ctl_augment(ori_train.loc[trn_ind], train_target.loc[trn_ind], train_nonscored.loc[trn_ind])
             train_X = np.concatenate([train_X,aug_X],axis=0)
             train_Y = np.concatenate([train_Y,aug_Y],axis=0)
             train_Y1 = np.concatenate([train_Y1,aug_Y1],axis=0)
-            del aug_X,aug_Y,aug_Y1
+            del aug_X, aug_Y, aug_Y1
         valid_X = train.loc[val_ind,features].values
         valid_Y = train_target.loc[val_ind,targets].values
 
@@ -505,6 +510,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 del aug_X,aug_Y,aug_Y1
             if epoch > 19:
                 train_data_loader = DataLoader(dataset=TensorDataset(torch.Tensor(train_X),torch.Tensor(train_Y),torch.Tensor(train_Y1)),batch_size=512,shuffle=True, drop_last=True)
+            
             # train
             train_loss = 0.0
             train_num = 0
@@ -522,7 +528,8 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 train_loss += (loss1.item()*x.shape[0])
 
             train_loss /= train_num
-            # eval
+            
+            # eval out-of-fold 
             model.eval()
             valid_loss = 0.0
             valid_num = 0
@@ -537,6 +544,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
             valid_loss /= valid_num
             valid_mean = np.mean(valid_preds)
             
+            # predictions on test dataset 
             t_preds = []
             for data in (test_data_loader):
                 x = data[0].to(device)
@@ -545,6 +553,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                 t_preds.extend(list(outputs.sigmoid().cpu().detach().numpy()))
             pred_mean = np.mean(t_preds)
             
+            # checkpoints 
             if valid_loss < best_valid_metric:
                 fname = os.path.join(args.model_dir, 'model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold))
                 torch.save(model.state_dict(), fname)
@@ -558,12 +567,14 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
                     break
             model.train()
         
+        # Load best model 
         fname = os.path.join(args.model_dir, 'model_%s_seed%s_fold%s.ckpt'%(mn,seed,fold))
         state_dict = torch.load(fname
                       , torch.device("cuda" if torch.cuda.is_available() else "cpu") )
         model.load_state_dict(state_dict)
         model.eval()
         
+        # Predictions in training  
         train_preds = []
         for data in (eval_train_data_loader):
             x = data[0].to(device)
@@ -574,6 +585,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
         eval_train_loss += train_loss
         print('eval_train_loss:', train_loss)
         
+        # Predictions in out-of-fold 
         valid_preds = []
         for data in (valid_data_loader):
             x,y = [d.to(device) for d in data]
@@ -582,6 +594,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
             valid_preds.extend(list(outputs.cpu().detach().numpy()))
         oof.loc[val_ind,targets] = 1 / (1+np.exp(-np.array(valid_preds)))
         
+        # Predictions in testing 
         t_preds = []
         for data in (test_data_loader):
             x = data[0].to(device)
@@ -592,6 +605,7 @@ def train_and_predict(features, sub, aug, mn,  folds=5, seed=6):
         preds.append(t_preds)
         del train_X,train_Y,valid_X,valid_Y,train_data_loader,valid_data_loader
 
+    # Format predictions to submission 
     sub[targets] = np.array(preds).mean(axis=0)
     print('eval_train_loss:', eval_train_loss/folds
                             , oof[targets].mean().mean()
@@ -636,7 +650,10 @@ train_target    = pd.read_csv(files[1])
 train           = pd.read_csv(files[2])
 train_nonscored = pd.read_csv(files[3])
 train_drug      = pd.read_csv(files[4])
-sub             = pd.read_csv(files[5])
+#sub             = pd.read_csv(files[5])
+
+# Initialize submission dataframe 
+sub = test.copy(deep = True)
 
 # keep datasets aligned by rows (axis = 0) 
 (train_target, _)     = train_target.align(train, axis = 0, join = 'inner')
@@ -705,7 +722,7 @@ oof, sub = train_and_predict(features = train_cols
                             , folds   = params.num_folds
                             , seed    = seed)
 outputs = []
-for seed in [66,666]:
+for seed in [66, 666]:
     Seed_everything(seed)
     outputs.append(train_and_predict(features = train_cols
                                     , sub = sub.copy()

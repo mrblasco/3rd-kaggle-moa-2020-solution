@@ -1,3 +1,4 @@
+.DS_Store
 data/from_kaggle
 __pycache__
 *.log 

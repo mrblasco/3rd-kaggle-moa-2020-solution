@@ -19,7 +19,8 @@ def launch_training_job(parent_dir, input_dir, train_file, job_name, params):
         params: (dict) containing hyperparameters
     """
     # Create a new folder in parent_dir with unique_name "job_name"
-    model_dir = os.path.join(parent_dir, job_name)
+    train_file_noext = os.path.splitext(train_file)[0]
+    model_dir = os.path.join(parent_dir, job_name, train_file_noext)
     if not os.path.exists(model_dir):
         os.makedirs(model_dir)
 

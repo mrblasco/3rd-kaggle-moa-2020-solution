@@ -306,6 +306,8 @@ SEEDS     = params.num_seeds # 3
 LEARNING  = 1/90.0/3.5*7
 DECAY     = 1e-5/9.5
 FOLDS     = 5
+AUGMENT   = params.augmentation
+
 
 trn_loss_ = []
  
@@ -356,7 +358,7 @@ train_cols = [col for col in train.columns if col not in ['sig_id', 'cp_type']]
 Seed_everything(0)
 oof, sub = train_and_predict(features = train_cols
                           , sub = sub.copy()
-                          , aug = True
+                          , aug = AUGMENT
                           , folds = FOLDS
                           , seed = 0
                           , lr = LEARNING
@@ -367,7 +369,7 @@ for seed in range(SEEDS):
     Seed_everything(seed)
     outputs.append(train_and_predict(features = train_cols
                                     , sub = sub.copy()
-                                    , aug = True
+                                    , aug = AUGMENT
                                     , folds = FOLDS
                                     , seed = seed
                                     , lr = LEARNING

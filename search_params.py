@@ -46,14 +46,16 @@ if __name__ == "__main__":
     files = ['daishu_solution.py', 'shiji_solution1.py']
 
     # Perform hypersearch over one parameter
-    learning_rates = [1e-4, 1e-3, 1e-2]
-
-    for train_file in files:
+    #learning_rates = [1e-4, 1e-3, 1e-2]
+    augmentation_bools = ['False', 'True']
     
-      for learning_rate in learning_rates:
+    for train_file in files:
+      for augmentation in augmentation_bools:
           # Modify the relevant parameter in params
-          params.learning_rate = learning_rate
+          #params.learning_rate = learning_rate
+          params.augmentation = augmentation
 
           # Launch job (name has to be unique)
-          job_name = "learning_rate_{}".format(learning_rate)
+          #job_name = "learning_rate_{}".format(learning_rate)
+          job_name = "augmentation_{}".format(augmentation)
           launch_training_job(args.parent_dir, args.input_dir, train_file, job_name, params)

@@ -5,4 +5,5 @@
     , "num_folds" : 5
     , "use_subset" : "False"
     , "num_seeds" : 3
+    , "augmentation": "True"
 }

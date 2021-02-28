@@ -326,10 +326,12 @@ params = utils.Params(json_path)
 
 #warnings.simplefilter('ignore')
 
+# Set hyperparameters
 device = ('cuda' if torch.cuda.is_available() else 'cpu')
-ncompo_genes = params.ncompo_genes #80
-ncompo_cells = params.ncompo_cells #10
-EPOCHS = params.num_epochs # 23
+ncompo_genes  = params.ncompo_genes #80
+ncompo_cells  = params.ncompo_cells #10
+EPOCHS        = params.num_epochs # 23
+AUGMENT       = params.augmentation
 
 utils.set_logger(os.path.join(args.model_dir, 'train.log'))
 
@@ -416,7 +418,7 @@ seed = 6
 Seed_everything(seed)
 oof, sub = train_and_predict(features = train_cols
                             , sub     = sub.copy()
-                            , aug     = True
+                            , aug     = AUGMENT
                             , mn      = 'attention_dnn'
                             , folds   = params.num_folds
                             , seed    = seed)
@@ -425,7 +427,7 @@ for seed in [66, 666]:
     Seed_everything(seed)
     outputs.append(train_and_predict(features = train_cols
                                     , sub = sub.copy()
-                                    , aug = True
+                                    , aug = AUGMENT
                                     , mn  = 'attention_dnn'
                                     , folds = params.num_folds
                                     , seed=seed))
@@ -436,7 +438,7 @@ for seed in [8, 88, 888]:
     Seed_everything(seed)
     outputs.append(train_and_predict(features = train_cols
                                     , sub = sub.copy()
-                                    , aug = True
+                                    , aug = AUGMENT
                                     , mn = 'tabnet'
                                     , folds = params.num_folds
                                     , seed = seed))
@@ -447,7 +449,7 @@ for seed in [9, 99, 999]:
     Seed_everything(seed)
     outputs.append(train_and_predict(features = train_cols
                                     , sub = sub.copy()
-                                    , aug = True
+                                    , aug = AUGMENT
                                     , mn = 'dnn'
                                     , folds = params.num_folds
                                     , seed = seed))

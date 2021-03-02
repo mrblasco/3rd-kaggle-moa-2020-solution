@@ -429,8 +429,8 @@ for model_name in model_names:
     valid_metric = Metric(train_target[targets].values, oof[targets].values)
     logging.info('oof mean:%.6f, sub mean:%.6f, valid metric:%.6f'%(oof[targets].mean().mean(), sub[targets].mean().mean(), valid_metric))
     
-    sub.to_csv(os.path.join(args.model_dir, "preds_{}_seed{}.csv".format(mn, seed)), index=False)
-    oof.to_csv(os.path.join(args.model_dir, "oof_{}_seed{}.csv".format(mn, seed)), index=False)
+    sub.to_csv(os.path.join(args.model_dir, "preds_{}_seed{}.csv".format(model_name, seed)), index=False)
+    oof.to_csv(os.path.join(args.model_dir, "oof_{}_seed{}.csv".format(model_name, seed)), index=False)
   
   logging.info("model {} done!".format(model_name))
 

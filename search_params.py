@@ -29,27 +29,29 @@ def launch_training_job(parent_dir, input_dir, train_file, job_name, params):
     params.save(json_path)
 
     # Launch training with this config
-    cmd = "{python} {train} --model_dir={model_dir} --input_dir {input_dir}".format(python=PYTHON, train=train_file
+    cmd = "{python} {train} --model_dir={model_dir} --input_dir {input_dir}".format(python=PYTHON
+                                                                                    , train=train_file
                                                                                     , model_dir=model_dir
                                                                                     , input_dir=input_dir)
     print(cmd)
     check_call(cmd, shell=True)
 
 if __name__ == "__main__":
+
     # Load the "reference" parameters from parent_dir json file
     args = parser.parse_args()
     json_path = os.path.join(args.parent_dir, 'params.json')
-    assert os.path.isfile(json_path), "No json configuration file found at {}".format(json_path)
+    assert os.path.isfile(json_path), "No json config. file found at {}".format(json_path)
     params = utils.Params(json_path)
     
-    # Model files
+    # Files with model instructions 
     files = ['daishu_solution.py', 'shiji_solution1.py']
 
-    # Perform hypersearch over one parameter
     #learning_rates = [1e-4, 1e-3, 1e-2]
     augmentation_bools = ['False', 'True']
     
     for train_file in files:
+    
       for augmentation in augmentation_bools:
           # Modify the relevant parameter in params
           #params.learning_rate = learning_rate

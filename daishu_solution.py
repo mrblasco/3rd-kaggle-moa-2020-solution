@@ -59,20 +59,19 @@ def save_mean_output(outputs, mn):
   oof = train[['sig_id']]
   for t in targets:
       oof[t] = 0.0
-  preds = []
   
   for i, output in enumerate(outputs):
       oof[targets] += output[0][targets]
-      preds[targets] += output[1][targets]
+      sub[targets] += output[1][targets]
   
   oof[targets] /= (1+len(outputs))
-  preds[targets] /= (1+len(outputs))
+  sub[targets] /= (1+len(outputs))
   
   valid_metric = Metric(train_target[targets].values, oof[targets].values)
   logging.info('oof mean:%.6f, sub mean:%.6f, valid metric:%.6f'%(oof[targets].mean().mean(), sub[targets].mean().mean(), valid_metric))
   
-  preds.loc[test['cp_type']=='ctl_vehicle', targets] = 0.0  
-  preds.to_csv(os.path.join(args.model_dir, "model_{}_preds.csv".format(mn)), index=False)
+  sub.loc[test['cp_type']=='ctl_vehicle', targets] = 0.0  
+  sub.to_csv(os.path.join(args.model_dir, "model_{}_preds.csv".format(mn)), index=False)
   preds.loc[test['cp_type']=='ctl_vehicle', targets] = 0.0  
   oof.to_csv(os.path.join(args.model_dir, "model_{}_oof.csv".format(mn)), index=False)
 

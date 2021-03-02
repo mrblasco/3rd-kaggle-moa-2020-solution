@@ -53,26 +53,7 @@ def Seed_everything(seed=42):
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
-    torch.backends.cudnn.deterministic = True
-
-def save_mean_output(outputs, mn): 
-  oof = train[['sig_id']]
-  for t in targets:
-      oof[t] = 0.0
-  
-  for i, output in enumerate(outputs):
-      oof[targets] += output[0][targets]
-      sub[targets] += output[1][targets]
-  oof[targets] /= (1+len(outputs))
-  sub[targets] /= (1+len(outputs))
-  
-  valid_metric = Metric(train_target[targets].values, oof[targets].values)
-  logging.info('oof mean:%.6f, sub mean:%.6f, valid metric:%.6f'%(oof[targets].mean().mean(), sub[targets].mean().mean(), valid_metric))
-  
-  sub.loc[test['cp_type']=='ctl_vehicle', targets] = 0.0  
-  sub.to_csv(os.path.join(args.model_dir, "model_{}_preds.csv".format(mn)), index=False)
-  #oof.loc[test['cp_type']=='ctl_vehicle', targets] = 0.0  
-  oof.to_csv(os.path.join(args.model_dir, "model_{}_oof.csv".format(mn)), index=False)
+    torch.backends.cudnn.deterministic = True 
 
 def Metric(labels, preds):
     labels = np.array(labels)
@@ -436,17 +417,21 @@ model_names = ['attention_dnn', 'tabnet', 'dnn']
 
 for model_name in model_names:
   logging.info("Model: {} ...".format(model_name))
-  outputs = []
   for seed in range(SEEDS):
-      Seed_everything(seed)
-      outputs.append(train_and_predict(features = train_cols
-                                      , sub   = sub.copy()
-                                      , aug   = AUGMENT
-                                      , mn    = model_name
-                                      , folds = params.num_folds
-                                      , seed  = seed)
-                                      )
-  save_mean_output(outputs, mn = model_name)
+    Seed_everything(seed)
+    oof, sub = train_and_predict(features = train_cols
+                                    , sub   = sub.copy()
+                                    , aug   = AUGMENT
+                                    , mn    = model_name
+                                    , folds = params.num_folds
+                                    , seed  = seed)
+    
+    valid_metric = Metric(train_target[targets].values, oof[targets].values)
+    logging.info('oof mean:%.6f, sub mean:%.6f, valid metric:%.6f'%(oof[targets].mean().mean(), sub[targets].mean().mean(), valid_metric))
+    
+    sub.to_csv(os.path.join(args.model_dir, "preds_{}_seed{}.csv".format(mn, seed)), index=False)
+    oof.to_csv(os.path.join(args.model_dir, "oof_{}_seed{}.csv".format(mn, seed)), index=False)
+  
   logging.info("model {} done!".format(model_name))
 
 logging.info("done!")

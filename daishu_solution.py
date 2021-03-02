@@ -63,7 +63,6 @@ def save_mean_output(outputs, mn):
   for i, output in enumerate(outputs):
       oof[targets] += output[0][targets]
       sub[targets] += output[1][targets]
-  
   oof[targets] /= (1+len(outputs))
   sub[targets] /= (1+len(outputs))
   
@@ -72,7 +71,7 @@ def save_mean_output(outputs, mn):
   
   sub.loc[test['cp_type']=='ctl_vehicle', targets] = 0.0  
   sub.to_csv(os.path.join(args.model_dir, "model_{}_preds.csv".format(mn)), index=False)
-  preds.loc[test['cp_type']=='ctl_vehicle', targets] = 0.0  
+  #oof.loc[test['cp_type']=='ctl_vehicle', targets] = 0.0  
   oof.to_csv(os.path.join(args.model_dir, "model_{}_oof.csv".format(mn)), index=False)
 
 def Metric(labels, preds):
@@ -357,7 +356,7 @@ ncompo_genes  = params.ncompo_genes #80
 ncompo_cells  = params.ncompo_cells #10
 EPOCHS        = params.num_epochs # 23
 AUGMENT       = params.augmentation
-SEEDS         = 3
+SEEDS         = params.num_seeds
 
 Seed_everything(seed=42)
 
@@ -441,11 +440,11 @@ for model_name in model_names:
   for seed in range(SEEDS):
       Seed_everything(seed)
       outputs.append(train_and_predict(features = train_cols
-                                      , sub = sub.copy()
-                                      , aug = AUGMENT
-                                      , mn  = model_name
+                                      , sub   = sub.copy()
+                                      , aug   = AUGMENT
+                                      , mn    = model_name
                                       , folds = params.num_folds
-                                      , seed=seed)
+                                      , seed  = seed)
                                       )
   save_mean_output(outputs, mn = model_name)
   logging.info("model {} done!".format(model_name))
